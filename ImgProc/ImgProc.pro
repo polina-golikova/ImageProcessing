@@ -15,26 +15,30 @@ SOURCES += \
     Segmentation.cpp \
     main.cpp \
     mainwindow.cpp \
-    Image.cpp \
-    Enhancement.cpp \
-    Segmentation.cpp
 
 HEADERS += \
     Enhancement.h \
     Image.h \
     Segmentation.h \
     mainwindow.h \
-    Image.h \
-    Enhancement.h \
-    Segmentation.h
 
 FORMS += \
     mainwindow.ui
 
 INCLUDEPATH += "C:/Program Files (x86)/opencv/build/include/"
 LIBS += "C:/Program Files (x86)/opencv/build/bin/*.dll"
+        "C:/Program Files (x86)/opencv/build/x64/vc14/bin/*.dll"
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/'../../../../../../Program Files (x86)/opencv/build/x64/vc14/lib/' -lopencv_world460
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/'../../../../../../Program Files (x86)/opencv/build/x64/vc14/lib/' -lopencv_world460d
+else:unix: LIBS += -L$$PWD/'../../../../../../Program Files (x86)/opencv/build/x64/vc14/lib/' -lopencv_world460
+
+INCLUDEPATH += $$PWD/'../../../../../../Program Files (x86)/opencv/build/x64/vc14'
+DEPENDPATH += $$PWD/'../../../../../../Program Files (x86)/opencv/build/x64/vc14'

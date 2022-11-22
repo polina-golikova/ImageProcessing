@@ -1,21 +1,21 @@
 #include "Image.h"
 
-Image::Image(string filePath)
+Image::Image(std::string filePath)
 {
     path = filePath;
     // Read the image file
-    Mat ogImg = imread(filePath);
+    *ogImg = imread(filePath);
 
     // Check for failure
-    if (ogImg.empty())
+    if (ogImg->empty())
     {
-        cout << "Could not open or find the image" << endl;
+        std::cout << "Could not open or find the image" << std::endl;
     }
     else
     {
-        newImg = &ogImg;
-        height = ogImg.rows;
-        width = ogImg.cols;
+        newImg = ogImg;
+        height = ogImg->rows;
+        width = ogImg->cols;
     }
 }
 
@@ -24,7 +24,7 @@ Image::~Image() {}
 void Image::displayImg()
 {
     // show image
-    imshow("Image", &newImg);
+    imshow("Image", *newImg);
 
     // Wait for any keystroke
     waitKey(0);
@@ -33,7 +33,7 @@ void Image::displayImg()
 void Image::displayOgImg()
 {
     // show image
-    imshow("Image", &ogImg);
+    cv::imshow("Image", *ogImg);
 
     // Wait for any keystroke
     waitKey(0);
@@ -43,28 +43,27 @@ double Image::getHeight() { return height; }
 
 double Image::getWidth() { return width; }
 
-Mat Image::originalImg() { return &ogImg; }
-
 void Image::saveImage()
 {
     // writing the image to a defined location as JPEG
-    bool check = imwrite("..path\\MyImage.jpg", newImg);
+    bool check = imwrite("..path\\MyImage.jpg", *newImg);
 
     // if the image is not saved
     if (check == false) {
-        cout << "Saving the image, FAILED" << endl;
+        std::cout << "Saving the image, FAILED" << std:: endl;
     }
-
 }
 
 void Image::makeGray()
 {
-    Mat grayImage = cvtColor(newImg, COLOR_RGR2GRAY);
-    newImg = &grayImage;
+    Mat* grayImage;
+    cvtColor(*newImg, *grayImage, COLOR_RGB2GRAY);
+    newImg = grayImage;
 }
 
 void Image::makeRGB()
 {
-    Mat colorImage = cvtColor(newImg, COLOR_GRAY2RGB);
-    newImg = &colorImage;
+    Mat* colorImage;
+    cvtColor(*newImg, *colorImage, COLOR_GRAY2RGB);
+    newImg = colorImage;
 }
