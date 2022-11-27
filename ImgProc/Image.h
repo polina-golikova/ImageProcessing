@@ -15,7 +15,6 @@ class Image {
 private:
     double height, width;
     std::string path;
-    Mat* newImg;
     Mat* ogImg;
 public:
     Image(std::string filePath);
@@ -28,6 +27,7 @@ public:
     void makeRGB();
     void saveImage();
     Mat* getImg();
+    Mat* newImg;
 };
 
 

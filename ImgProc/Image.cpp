@@ -46,8 +46,6 @@ double Image::getHeight() { return height; }
 
 double Image::getWidth() { return width; }
 
-Mat* Image::getImg() { return newImg; }
-
 void Image::saveImage()
 {
     makeRGB();

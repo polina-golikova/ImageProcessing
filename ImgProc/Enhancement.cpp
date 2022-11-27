@@ -5,19 +5,26 @@ Enhancement::Enhancement(Mat *newImg)
     img = newImg;
 }
 
-~Enhancement::Enhancement(){}
+~Enhancement::Enhancement()
+{
+    delete img;
+}
 
 void Enhancement::histogramEquilization()
 {
-    equalizeHist(img.getImg(), img.getImg());
+    equalizeHist(img->newImg, img->newImg);
 }
 
 void Enhancement::lowPassFilter()
 {
-    kern = ones
+    Mat *dst = (img->newImg).clone();
+    img->newImg = GaussianBlur(img->newImg, dst, Size(2, 2), 0, 0);
+    delete dst;
 }
 
 void Enhancement::highPassFilter()
 {
-
+    Mat *dst = (img->newImg).clone();
+    img->newImg = img->newImg - GaussianBlur(img->newImg, dst, Size(2, 2), 0, 0);
+    delete dst;
 }

@@ -10,6 +10,8 @@ using namespace std;
 
 class Segmentation {
 public:
+    Segmentation(Mat *newImg);
+    ~Segmentation();
 private:
     Image *img;
 };
