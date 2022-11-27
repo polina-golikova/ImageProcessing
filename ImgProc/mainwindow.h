@@ -17,9 +17,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void on_filePathTxt_clicked();
+    void on_openImageBtn_clicked();
+    void on_viewImageBtn_clicked();
+    void on_viewNewImageBtn_clicked();
+    void on_saveImageBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
     Image *img;
+    QString filename;
 };
 #endif // MAINWINDOW_H

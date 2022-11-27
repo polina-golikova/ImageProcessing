@@ -7,6 +7,7 @@ Segmentation::Segmentation(Mat *newImg)
 
 ~Segmentation::Segmentation()
 {
+    // Deallocate memory
     delete img;
 }
 

@@ -7,6 +7,7 @@ Enhancement::Enhancement(Mat *newImg)
 
 ~Enhancement::Enhancement()
 {
+    // Deallocate memory
     delete img;
 }
 
