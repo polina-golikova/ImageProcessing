@@ -10,8 +10,8 @@ Image::Image(std::string filePath)
     if (ogImg->empty())
     {
         QMessageBox messageBox;
-        messageBox.critical(0,"Error","Could not open or find the image.");
-        messageBox.setFixedSize(500,200);
+        messageBox.critical(0, "Error","Could not open or find the image.");
+        messageBox.setFixedSize(500, 200);
     }
     else
     {

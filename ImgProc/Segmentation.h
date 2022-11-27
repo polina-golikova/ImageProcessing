@@ -12,6 +12,14 @@ class Segmentation {
 public:
     Segmentation(Mat *newImg);
     ~Segmentation();
+    void threshold(uint32_t);
+    void kirsch();
+    void prewitt();
+    void sobel();
+    void watershed();
+    void dialation();
+    void erosion();
+
 private:
     Image *img;
 };
