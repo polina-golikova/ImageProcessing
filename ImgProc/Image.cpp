@@ -9,7 +9,9 @@ Image::Image(std::string filePath)
     // Check for failure
     if (ogImg->empty())
     {
-        std::cout << "Could not open or find the image" << std::endl;
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Could not open or find the image.");
+        messageBox.setFixedSize(500,200);
     }
     else
     {
@@ -17,6 +19,7 @@ Image::Image(std::string filePath)
         height = ogImg->rows;
         width = ogImg->cols;
     }
+    makeGray();
 }
 
 Image::~Image() {}
@@ -43,27 +46,28 @@ double Image::getHeight() { return height; }
 
 double Image::getWidth() { return width; }
 
+Mat* Image::getImg() { return newImg; }
+
 void Image::saveImage()
 {
+    makeRGB();
     // writing the image to a defined location as JPEG
     bool check = imwrite("..path\\MyImage.jpg", *newImg);
 
     // if the image is not saved
     if (check == false) {
-        std::cout << "Saving the image, FAILED" << std:: endl;
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Failed to save image.");
+        messageBox.setFixedSize(500,200);
     }
 }
 
 void Image::makeGray()
 {
-    Mat* grayImage;
-    cvtColor(*newImg, *grayImage, COLOR_RGB2GRAY);
-    newImg = grayImage;
+    cvtColor(*newImg, *newImg, COLOR_BRG2GRAY);
 }
 
 void Image::makeRGB()
 {
-    Mat* colorImage;
-    cvtColor(*newImg, *colorImage, COLOR_GRAY2RGB);
-    newImg = colorImage;
+    cvtColor(*newImg, *newImg, COLOR_GRAY2BRG);
 }

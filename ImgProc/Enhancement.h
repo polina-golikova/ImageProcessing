@@ -1,14 +1,21 @@
 #ifndef IMAGEPROCESSINGAPPLICATION_ENHANCEMENT_H
 #define IMAGEPROCESSINGAPPLICATION_ENHANCEMENT_H
 
-#include <opencv2/opencv.hpp>
 #include <iostream>
+#include "Image.h"
 
 using namespace cv;
 using namespace std;
 
 class Enhancement {
-
+public:
+    Enhancement(Mat *newImg);
+    ~Enhancement();
+    void histogramEquilization();
+    void lowPassFilter();
+    void highPassFilter();
+private:
+    Image *img;
 };
 
 

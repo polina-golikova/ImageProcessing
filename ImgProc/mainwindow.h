@@ -20,5 +20,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Image *img;
 };
 #endif // MAINWINDOW_H

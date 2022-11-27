@@ -27,6 +27,7 @@ public:
     void makeGray();
     void makeRGB();
     void saveImage();
+    Mat* getImg();
 };
 
 

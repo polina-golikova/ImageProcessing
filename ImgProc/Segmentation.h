@@ -3,12 +3,15 @@
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include "Image.h"
 
 using namespace cv;
 using namespace std;
 
 class Segmentation {
-
+public:
+private:
+    Image *img;
 };
 
 
