@@ -22,19 +22,19 @@ MainWindow::MainWindow(QWidget *parent)
     connect(saveImageBtn, &QPushButton::released, this, &MainWindow::on_saveImageBtn_clicked);
 
     // Enhancement check boxes
-    connect(histBx, &QCheckBox::clicked, this, &MainWindow::on_histBx_clicked);
-    connect(hpBx, &QCheckBox::clicked, this, &MainWindow::on_hpBx_clicked);
-    connect(lpBx, &QCheckBox::clicked, this, &MainWindow::on_lpBx_clicked);
+    connect(histBx, SIGNAL(clicked(bool)), this, SLOT(on_histBx_clicked(bool)));
+    connect(hpBx, SIGNAL(clicked(bool)), this, SLOT(on_hpBx_clicked(bool)));
+    connect(lpBx, SIGNAL(clicked(bool)), this, SLOT(on_lpBx_clicked(bool)));
 
     // Segmentation check boxes
-    connect(threshBx, &QCheckBox::clicked, this, &MainWindow::on_threshBx_clicked);
-    connect(kirBx, &QCheckBox::clicked, this, &MainWindow::on_kirBx_clicked);
-    connect(gausBx, &QCheckBox::clicked, this, &MainWindow::on_gausBx_clicked);
-    connect(prewBx, &QCheckBox::clicked, this, &MainWindow::on_prewBx_clicked);
-    connect(waterBx, &QCheckBox::clicked, this, &MainWindow::on_waterBx_clicked);
-    connect(sobBx, &QCheckBox::clicked, this, &MainWindow::on_sobBx_clicked);
-    connect(eroBx, &QCheckBox::clicked, this, &MainWindow::on_eroBx_clicked);
-    connect(diaBx, &QCheckBox::clicked, this, &MainWindow::on_diaBx_clicked);
+    connect(threshBx, SIGNAL(clicked(bool)), this, SLOT(on_threshBx_clicked(bool)));
+    connect(kirBx, SIGNAL(clicked(bool)), this, SLOT(on_kirBx_clicked(bool)));
+    connect(gausBx, SIGNAL(clicked(bool)), this, SLOT(on_gausBx_clicked(bool)));
+    connect(prewBx, SIGNAL(clicked(bool)), this, SLOT(on_prewBx_clicked(bool)));
+    connect(waterBx, SIGNAL(clicked(bool)), this, SLOT(on_waterBx_clicked(bool)));
+    connect(sobBx, SIGNAL(clicked(bool)), this, SLOT(on_sobBx_clicked(bool)));
+    connect(eroBx, SIGNAL(clicked(bool)), this, SLOT(on_eroBx_clicked(bool)));
+    connect(diaBx, SIGNAL(clicked(bool)), this, SLOT(on_diaBx_clicked(bool)));
 }
 
 //  MainWindow: creates MainWindow destructor to deallocate memory
@@ -71,10 +71,12 @@ void MainWindow::on_filePathTxt_clicked()
 //
 void MainWindow::on_openImageBtn_clicked()
 {
-    *img = new img(filename);
+    *img = new Image(filename);
+    *e = new Enhancement(img);
+    *s = new Segmentation(img);
 }
 
-//  on_viewImageBtn_clicked: dislays new window with Img* image obj
+//  on_viewImageBtn_clicked: displays new window with Img* image obj
 //
 //  Input:
 //  Output:
@@ -92,4 +94,91 @@ void MainWindow::on_viewNewImageBtn_clicked()
 void MainWindow::on_saveImageBtn_clicked()
 {
     img.saveImage();
+}
+
+void MainWindow::on_histBx_clicked(bool checked)
+{
+    if (checked)
+    {
+        e.histogramEquilization();
+    }
+}
+
+void MainWindow::on_hpBx_clicked(bool checked)
+{
+    if (checked)
+    {
+        e.highPassFilter()
+    }
+}
+
+void MainWindow::on_lpBx_clicked(bool checked)
+{
+    if (checked)
+    {
+        e.lowPassFilter();
+    }
+}
+
+void MainWindow::on_threshBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
+}
+
+void MainWindow::on_kirBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
+}
+void MainWindow::on_gausBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
+}
+
+void MainWindow::on_prewBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
+}
+
+void MainWindow::on_waterBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
+}
+
+void MainWindow::on_sobBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
+}
+
+void MainWindow::on_eroBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
+}
+
+void MainWindow::on_diaBx_clicked(bool)
+{
+    if (checked)
+    {
+
+    }
 }
