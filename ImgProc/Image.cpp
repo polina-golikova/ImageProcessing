@@ -1,4 +1,5 @@
 #include "Image.h"
+#include <QMessageBox>
 
 Image::Image(std::string filePath)
 {

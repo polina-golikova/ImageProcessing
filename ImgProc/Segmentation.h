@@ -10,7 +10,7 @@ using namespace std;
 
 class Segmentation {
 public:
-    Segmentation(Mat *newImg);
+    Segmentation(Image *newImg);
     ~Segmentation();
     void threshold(uint32_t);
     void kirsch();

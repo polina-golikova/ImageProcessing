@@ -9,7 +9,7 @@ using namespace std;
 
 class Enhancement {
 public:
-    Enhancement(Mat *newImg);
+    Enhancement(Image *newImg);
     ~Enhancement();
     void histogramEquilization();
     void lowPassFilter();

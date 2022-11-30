@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFileDialog>
 
 //  MainWindow: creates MainWindow constructor to generate the UI backend
 //
@@ -15,26 +16,26 @@ MainWindow::MainWindow(QWidget *parent)
     // Connect buttons to signals
 
     // File and image I/O, view buttons
-    connect(filePathTxt, &QPushButton::released, this, &MainWindow::on_filePathTxt_clicked);
-    connect(openImageBtn, &QPushButton::released, this, &MainWindow::on_openImageBtn_clicked);
-    connect(viewImageBtn, &QPushButton::released, this, &MainWindow::on_viewImageBtn_clicked);
-    connect(viewNewImageBtn, &QPushButton::released, this, &MainWindow::on_viewNewImageBtn_clicked);
-    connect(saveImageBtn, &QPushButton::released, this, &MainWindow::on_saveImageBtn_clicked);
+    connect(ui->loadImgBtn, SIGNAL(clicked()), this,SLOT(on_filePathTxt_clicked()));
+    connect(ui->openImageBtn, SIGNAL(clicked()), this, SLOT(on_openImageBtn_clicked()));
+    connect(ui->viewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewImageBtn_clicked()));
+    connect(ui->viewNewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewNewImageBtn_clicked()));
+    connect(ui->saveImageBtn, SIGNAL(clicked()), this, SLOT(on_saveImageBtn_clicked()));
 
     // Enhancement check boxes
-    connect(histBx, SIGNAL(clicked(bool)), this, SLOT(on_histBx_clicked(bool)));
-    connect(hpBx, SIGNAL(clicked(bool)), this, SLOT(on_hpBx_clicked(bool)));
-    connect(lpBx, SIGNAL(clicked(bool)), this, SLOT(on_lpBx_clicked(bool)));
+    connect(ui->histBx, SIGNAL(clicked(bool)), this, SLOT(on_histBx_clicked(bool)));
+    connect(ui->hpBx, SIGNAL(clicked(bool)), this, SLOT(on_hpBx_clicked(bool)));
+    connect(ui->lpBx, SIGNAL(clicked(bool)), this, SLOT(on_lpBx_clicked(bool)));
 
     // Segmentation check boxes
-    connect(threshBx, SIGNAL(clicked(bool)), this, SLOT(on_threshBx_clicked(bool)));
-    connect(kirBx, SIGNAL(clicked(bool)), this, SLOT(on_kirBx_clicked(bool)));
-    connect(gausBx, SIGNAL(clicked(bool)), this, SLOT(on_gausBx_clicked(bool)));
-    connect(prewBx, SIGNAL(clicked(bool)), this, SLOT(on_prewBx_clicked(bool)));
-    connect(waterBx, SIGNAL(clicked(bool)), this, SLOT(on_waterBx_clicked(bool)));
-    connect(sobBx, SIGNAL(clicked(bool)), this, SLOT(on_sobBx_clicked(bool)));
-    connect(eroBx, SIGNAL(clicked(bool)), this, SLOT(on_eroBx_clicked(bool)));
-    connect(diaBx, SIGNAL(clicked(bool)), this, SLOT(on_diaBx_clicked(bool)));
+    connect(ui->threshBx, SIGNAL(clicked(bool)), this, SLOT(on_threshBx_clicked(bool)));
+    connect(ui->kirBx, SIGNAL(clicked(bool)), this, SLOT(on_kirBx_clicked(bool)));
+    connect(ui->gausBx, SIGNAL(clicked(bool)), this, SLOT(on_gausBx_clicked(bool)));
+    connect(ui->prewBx, SIGNAL(clicked(bool)), this, SLOT(on_prewBx_clicked(bool)));
+    connect(ui->waterBx, SIGNAL(clicked(bool)), this, SLOT(on_waterBx_clicked(bool)));
+    connect(ui->sobBx, SIGNAL(clicked(bool)), this, SLOT(on_sobBx_clicked(bool)));
+    connect(ui->eroBx, SIGNAL(clicked(bool)), this, SLOT(on_eroBx_clicked(bool)));
+    connect(ui->diaBx, SIGNAL(clicked(bool)), this, SLOT(on_diaBx_clicked(bool)));
 }
 
 //  MainWindow: creates MainWindow destructor to deallocate memory
@@ -71,9 +72,12 @@ void MainWindow::on_filePathTxt_clicked()
 //
 void MainWindow::on_openImageBtn_clicked()
 {
-    *img = new Image(filename);
-    *e = new Enhancement(img);
-    *s = new Segmentation(img);
+    Image i(filename.toStdString());
+    img = &i;
+    Enhancement enh(img);
+    Segmentation seg(img);
+    e = &enh;
+    s = &seg;
 }
 
 //  on_viewImageBtn_clicked: displays new window with Img* image obj
@@ -83,24 +87,24 @@ void MainWindow::on_openImageBtn_clicked()
 //
 void MainWindow::on_viewImageBtn_clicked()
 {
-    img.displayOgImg();
+    img->displayOgImg();
 }
 
 void MainWindow::on_viewNewImageBtn_clicked()
 {
-    img.displayImg();
+    img->displayImg();
 }
 
 void MainWindow::on_saveImageBtn_clicked()
 {
-    img.saveImage();
+    img->saveImage();
 }
 
 void MainWindow::on_histBx_clicked(bool checked)
 {
     if (checked)
     {
-        e.histogramEquilization();
+        e->histogramEquilization();
     }
 }
 
@@ -108,7 +112,7 @@ void MainWindow::on_hpBx_clicked(bool checked)
 {
     if (checked)
     {
-        e.highPassFilter()
+        e->highPassFilter();
     }
 }
 
@@ -116,11 +120,11 @@ void MainWindow::on_lpBx_clicked(bool checked)
 {
     if (checked)
     {
-        e.lowPassFilter();
+        e->lowPassFilter();
     }
 }
 
-void MainWindow::on_threshBx_clicked(bool)
+void MainWindow::on_threshBx_clicked(bool checked)
 {
     if (checked)
     {
@@ -128,22 +132,14 @@ void MainWindow::on_threshBx_clicked(bool)
     }
 }
 
-void MainWindow::on_kirBx_clicked(bool)
+void MainWindow::on_kirBx_clicked(bool checked)
 {
     if (checked)
     {
 
     }
 }
-void MainWindow::on_gausBx_clicked(bool)
-{
-    if (checked)
-    {
-
-    }
-}
-
-void MainWindow::on_prewBx_clicked(bool)
+void MainWindow::on_gausBx_clicked(bool checked)
 {
     if (checked)
     {
@@ -151,7 +147,7 @@ void MainWindow::on_prewBx_clicked(bool)
     }
 }
 
-void MainWindow::on_waterBx_clicked(bool)
+void MainWindow::on_prewBx_clicked(bool checked)
 {
     if (checked)
     {
@@ -159,7 +155,7 @@ void MainWindow::on_waterBx_clicked(bool)
     }
 }
 
-void MainWindow::on_sobBx_clicked(bool)
+void MainWindow::on_waterBx_clicked(bool checked)
 {
     if (checked)
     {
@@ -167,7 +163,7 @@ void MainWindow::on_sobBx_clicked(bool)
     }
 }
 
-void MainWindow::on_eroBx_clicked(bool)
+void MainWindow::on_sobBx_clicked(bool checked)
 {
     if (checked)
     {
@@ -175,7 +171,15 @@ void MainWindow::on_eroBx_clicked(bool)
     }
 }
 
-void MainWindow::on_diaBx_clicked(bool)
+void MainWindow::on_eroBx_clicked(bool checked)
+{
+    if (checked)
+    {
+
+    }
+}
+
+void MainWindow::on_diaBx_clicked(bool checked)
 {
     if (checked)
     {

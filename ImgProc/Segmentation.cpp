@@ -1,11 +1,11 @@
 #include "Segmentation.h"
 
-Segmentation::Segmentation(Mat *newImg)
+Segmentation::Segmentation(Image *newImg)
 {
     img = newImg;
 }
 
-~Segmentation::Segmentation()
+Segmentation::~Segmentation()
 {
     // Deallocate memory
     delete img;
