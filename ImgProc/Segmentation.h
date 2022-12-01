@@ -1,7 +1,6 @@
 #ifndef IMAGEPROCESSINGAPPLICATION_SEGMENTATION_H
 #define IMAGEPROCESSINGAPPLICATION_SEGMENTATION_H
 
-#include <opencv2/opencv.hpp>
 #include <iostream>
 #include "Image.h"
 
@@ -12,13 +11,13 @@ class Segmentation {
 public:
     Segmentation(Image *newImg);
     ~Segmentation();
-    void threshold(uint32_t);
-    void kirsch();
-    void prewitt();
-    void sobel();
+    void thresh(uint32_t);
+    void kirsch(uint32_t kern);
+    void prewitt(uint32_t kern);
+    void sobel(uint32_t kern);
     void watershed();
-    void dialation();
-    void erosion();
+    void dialation(uint32_t kern);
+    void erosion(uint32_t kern);
 
 private:
     Image *img;

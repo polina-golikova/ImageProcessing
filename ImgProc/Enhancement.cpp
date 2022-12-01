@@ -1,4 +1,7 @@
 #include "Enhancement.h"
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 Enhancement::Enhancement(Image *newImg)
 {
@@ -13,19 +16,19 @@ Enhancement::~Enhancement()
 
 void Enhancement::histogramEquilization()
 {
-    equalizeHist(img->newImg, img->newImg);
+    equalizeHist( *img->newImg, *img->newImg );
 }
 
 void Enhancement::lowPassFilter()
 {
-    Mat *dst = img->newImg->clone();
-    img->newImg = GaussianBlur(img->newImg, dst, Size(2, 2), 0, 0);
-    delete dst;
+    Mat dst;
+    GaussianBlur( *img->newImg, dst, Size(1, 1), 0 );
+    *img->newImg = dst;
 }
 
 void Enhancement::highPassFilter()
 {
-    Mat *dst = img->newImg->clone();
-    img->newImg = img->newImg - GaussianBlur(img->newImg, dst, Size(2, 2), 0, 0);
-    delete dst;
+    Mat dst;
+    GaussianBlur( *img->newImg, dst, Size(1, 1), 0 );
+    *img->newImg = *img->newImg - dst;
 }

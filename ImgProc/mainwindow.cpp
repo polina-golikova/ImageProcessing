@@ -128,7 +128,7 @@ void MainWindow::on_threshBx_clicked(bool checked)
 {
     if (checked)
     {
-
+        s->thresh(ui->threshVal->text().toInt());
     }
 }
 

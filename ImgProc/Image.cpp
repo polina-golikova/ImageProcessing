@@ -72,11 +72,11 @@ void Image::saveImage()
 void Image::makeGray()
 {
     // Make RGB image grayscale
-    cvtColor(*newImg, *newImg, COLOR_BRG2GRAY);
+    cvtColor(*newImg, *newImg, COLOR_BGR2GRAY);
 }
 
 void Image::makeRGB()
 {
     // Make grayscale image RGB
-    cvtColor(*newImg, *newImg, COLOR_GRAY2BRG);
+    cvtColor(*newImg, *newImg, COLOR_GRAY2BGR);
 }

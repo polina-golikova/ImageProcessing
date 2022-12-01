@@ -1,4 +1,8 @@
 #include "Segmentation.h"
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 Segmentation::Segmentation(Image *newImg)
 {
@@ -11,22 +15,24 @@ Segmentation::~Segmentation()
     delete img;
 }
 
-void Segmentation::threshold(uint32_t max)
+void Segmentation::thresh(uint32_t max)
 {
-    threshold( img->newImg, img->newImg, max, 255, THRESH_BINARY );
+    Mat dst;
+    threshold( *img->newImg, dst, max, 255, THRESH_BINARY );
+    *img->newImg = dst;
 }
 
-void Segmentation::kirsch()
-{
-
-}
-
-void Segmentation::prewitt()
+void Segmentation::kirsch(uint32_t kern)
 {
 
 }
 
-void Segmentation::sobel()
+void Segmentation::prewitt(uint32_t kern)
+{
+
+}
+
+void Segmentation::sobel(uint32_t kern)
 {
 
 }
@@ -36,12 +42,12 @@ void Segmentation::watershed()
 
 }
 
-void Segmentation::dialation()
+void Segmentation::dialation(uint32_t kern)
 {
 
 }
 
-void Segmentation::erosion()
+void Segmentation::erosion(uint32_t kern)
 {
 
 }

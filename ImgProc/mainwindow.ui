@@ -383,7 +383,7 @@
      </font>
     </property>
    </widget>
-   <widget class="QLineEdit" name="gausW">
+   <widget class="QLineEdit" name="gausKirn">
     <property name="geometry">
      <rect>
       <x>480</x>
@@ -396,57 +396,6 @@
      <font>
       <pointsize>12</pointsize>
      </font>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="gausH">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>170</y>
-      <width>41</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>170</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Width</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>170</y>
-      <width>51</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Height</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -615,6 +564,24 @@
      <font>
       <pointsize>12</pointsize>
      </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>170</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Kernel size</string>
     </property>
    </widget>
   </widget>
