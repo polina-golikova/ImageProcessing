@@ -62,6 +62,7 @@ public:
     QPushButton *loadImgBtn;
     QLineEdit *threshVal;
     QLabel *label_11;
+    QPushButton *clearBtn;
     QStatusBar *statusbar;
     QMenuBar *menubar;
     QMenu *menuFile;
@@ -136,11 +137,11 @@ public:
         diaBx->setFont(font1);
         viewNewImageBtn = new QPushButton(centralwidget);
         viewNewImageBtn->setObjectName("viewNewImageBtn");
-        viewNewImageBtn->setGeometry(QRect(210, 410, 161, 31));
+        viewNewImageBtn->setGeometry(QRect(270, 410, 161, 31));
         viewNewImageBtn->setFont(font1);
         saveImageBtn = new QPushButton(centralwidget);
         saveImageBtn->setObjectName("saveImageBtn");
-        saveImageBtn->setGeometry(QRect(390, 410, 121, 31));
+        saveImageBtn->setGeometry(QRect(460, 410, 121, 31));
         saveImageBtn->setFont(font1);
         label = new QLabel(centralwidget);
         label->setObjectName("label");
@@ -212,13 +213,17 @@ public:
         label_11->setObjectName("label_11");
         label_11->setGeometry(QRect(530, 170, 161, 21));
         label_11->setFont(font1);
+        clearBtn = new QPushButton(centralwidget);
+        clearBtn->setObjectName("clearBtn");
+        clearBtn->setGeometry(QRect(80, 410, 161, 31));
+        clearBtn->setFont(font1);
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 724, 21));
+        menubar->setGeometry(QRect(0, 0, 724, 25));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName("menuFile");
         menuClose = new QMenu(menubar);
@@ -236,7 +241,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        openImageBtn->setText(QCoreApplication::translate("MainWindow", "Open Image", nullptr));
+        openImageBtn->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
         viewImageBtn->setText(QCoreApplication::translate("MainWindow", "View Original Image", nullptr));
         histBx->setText(QCoreApplication::translate("MainWindow", "Histogram Equilization", nullptr));
         hpBx->setText(QCoreApplication::translate("MainWindow", "High Pass Filter", nullptr));
@@ -259,8 +264,9 @@ public:
         label_8->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
         label_9->setText(QCoreApplication::translate("MainWindow", "Enhancement", nullptr));
         label_10->setText(QCoreApplication::translate("MainWindow", "Segmentation", nullptr));
-        loadImgBtn->setText(QCoreApplication::translate("MainWindow", "Load Image", nullptr));
+        loadImgBtn->setText(QCoreApplication::translate("MainWindow", "Browse", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
+        clearBtn->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuClose->setTitle(QCoreApplication::translate("MainWindow", "Close", nullptr));
     } // retranslateUi

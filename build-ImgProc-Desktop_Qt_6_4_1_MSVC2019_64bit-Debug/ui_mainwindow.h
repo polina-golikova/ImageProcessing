@@ -218,7 +218,7 @@ public:
         MainWindow->setStatusBar(statusbar);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 724, 21));
+        menubar->setGeometry(QRect(0, 0, 724, 25));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName("menuFile");
         menuClose = new QMenu(menubar);
@@ -236,7 +236,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        openImageBtn->setText(QCoreApplication::translate("MainWindow", "Open Image", nullptr));
+        openImageBtn->setText(QCoreApplication::translate("MainWindow", "Load", nullptr));
         viewImageBtn->setText(QCoreApplication::translate("MainWindow", "View Original Image", nullptr));
         histBx->setText(QCoreApplication::translate("MainWindow", "Histogram Equilization", nullptr));
         hpBx->setText(QCoreApplication::translate("MainWindow", "High Pass Filter", nullptr));
@@ -259,7 +259,7 @@ public:
         label_8->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
         label_9->setText(QCoreApplication::translate("MainWindow", "Enhancement", nullptr));
         label_10->setText(QCoreApplication::translate("MainWindow", "Segmentation", nullptr));
-        loadImgBtn->setText(QCoreApplication::translate("MainWindow", "Load Image", nullptr));
+        loadImgBtn->setText(QCoreApplication::translate("MainWindow", "Browse", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuClose->setTitle(QCoreApplication::translate("MainWindow", "Close", nullptr));

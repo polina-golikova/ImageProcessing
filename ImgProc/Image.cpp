@@ -5,8 +5,8 @@ Image::Image(std::string filePath)
 {
     path = filePath;
     // Read the image file
-    *ogImg = imread(filePath);
-
+    Mat src = imread(filePath);
+    ogImg = &src;
     // Check for failure
     if (ogImg->empty())
     {
@@ -18,7 +18,10 @@ Image::Image(std::string filePath)
     else
     {
         // Save images, set height and width
-        newImg = ogImg;
+        newImg = new Mat;
+        *newImg = *ogImg;
+        ogImg = new Mat;
+        *ogImg = *newImg;
         height = ogImg->rows;
         width = ogImg->cols;
     }
@@ -27,27 +30,27 @@ Image::Image(std::string filePath)
 
 Image::~Image()
 {
-    // Deallocate memory
-    delete newImg, ogImg;
+    delete newImg;
+    delete ogImg;
 }
 
 void Image::displayImg()
 {
     // show image
-    imshow("Image", *newImg);
-
-    // Wait for any keystroke
-    waitKey(0);
+    cv::imshow("Image", *newImg);
 }
 
 void Image::displayOgImg()
 {
     // show image
     cv::imshow("Image", *ogImg);
-
-    // Wait for any keystroke
-    waitKey(0);
 }
+
+void Image::reset()
+{
+    newImg = ogImg;
+}
+
 // getters for height and width
 double Image::getHeight() { return height; }
 

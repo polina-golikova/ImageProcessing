@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
+#include <QMessageBox>
 
 //  MainWindow: creates MainWindow constructor to generate the UI backend
 //
@@ -16,11 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
     // Connect buttons to signals
 
     // File and image I/O, view buttons
-    connect(ui->loadImgBtn, SIGNAL(clicked()), this,SLOT(on_filePathTxt_clicked()));
-    connect(ui->openImageBtn, SIGNAL(clicked()), this, SLOT(on_openImageBtn_clicked()));
-    connect(ui->viewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewImageBtn_clicked()));
+    connect(ui->loadImgBtn, SIGNAL(clicked()), this,SLOT(on_filePathTxt()));
+    connect(ui->openImageBtn, SIGNAL(clicked()), this, SLOT(on_openImageBtn()));
+    connect(ui->viewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewImageBtn()));
     connect(ui->viewNewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewNewImageBtn_clicked()));
     connect(ui->saveImageBtn, SIGNAL(clicked()), this, SLOT(on_saveImageBtn_clicked()));
+    connect(ui->clearBtn, SIGNAL(clicked()), this, SLOT(on_clear()));
 
     // Enhancement check boxes
     connect(ui->histBx, SIGNAL(clicked(bool)), this, SLOT(on_histBx_clicked(bool)));
@@ -47,6 +49,9 @@ MainWindow::~MainWindow()
 {
     // Deallocate memory
     delete ui;
+    delete img;
+    delete e;
+    delete s;
 }
 
 //  on_filePathTxt_clicked: saves user defined image file path and outputs to window
@@ -54,12 +59,9 @@ MainWindow::~MainWindow()
 //  Input:
 //  Output:
 //
-void MainWindow::on_filePathTxt_clicked()
+void MainWindow::on_filePathTxt()
 {
     filename = QFileDialog::getOpenFileName(this, "Choose File");
-
-    if(filename.isEmpty())
-        return;
 
     ui->filePathTxt->clear();
     ui->filePathTxt->setPlainText(filename);
@@ -70,14 +72,28 @@ void MainWindow::on_filePathTxt_clicked()
 //  Input:
 //  Output:
 //
-void MainWindow::on_openImageBtn_clicked()
+void MainWindow::on_openImageBtn()
 {
-    Image i(filename.toStdString());
-    img = &i;
-    Enhancement enh(img);
-    Segmentation seg(img);
-    e = &enh;
-    s = &seg;
+    img = new Image(filename.toStdString());
+    e = new Enhancement(img);
+    s = new Segmentation(img);
+}
+
+void MainWindow::on_clear()
+{
+    ui->histBx->setCheckState(Qt::Unchecked);
+    ui->hpBx->setCheckState(Qt::Unchecked);
+    ui->lpBx->setCheckState(Qt::Unchecked);
+    ui->threshBx->setCheckState(Qt::Unchecked);
+    ui->kirBx->setCheckState(Qt::Unchecked);
+    ui->gausBx->setCheckState(Qt::Unchecked);
+    ui->prewBx->setCheckState(Qt::Unchecked);
+    ui->waterBx->setCheckState(Qt::Unchecked);
+    ui->sobBx->setCheckState(Qt::Unchecked);
+    ui->eroBx->setCheckState(Qt::Unchecked);
+    ui->diaBx->setCheckState(Qt::Unchecked);
+    img->reset();
+    img->makeGray();
 }
 
 //  on_viewImageBtn_clicked: displays new window with Img* image obj
@@ -85,7 +101,7 @@ void MainWindow::on_openImageBtn_clicked()
 //  Input:
 //  Output:
 //
-void MainWindow::on_viewImageBtn_clicked()
+void MainWindow::on_viewImageBtn()
 {
     img->displayOgImg();
 }

@@ -17,7 +17,7 @@ private:
     std::string path;
     Mat* ogImg;
 public:
-    Image(std::string filePath);
+    Image(std::string);
     ~Image();
     double getHeight();
     double getWidth();
@@ -26,6 +26,7 @@ public:
     void makeGray();
     void makeRGB();
     void saveImage();
+    void reset();
     Mat* getImg();
     Mat* newImg;
 };

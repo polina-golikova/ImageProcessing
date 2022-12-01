@@ -17,9 +17,18 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void on_filePathTxt_clicked();
-    void on_openImageBtn_clicked();
-    void on_viewImageBtn_clicked();
+private:
+    Ui::MainWindow *ui;
+    Image *img;
+    Enhancement *e;
+    Segmentation *s;
+    QString filename;
+private slots:
+    void on_openImageBtn();
+    void on_filePathTxt();
+    void on_viewImageBtn();
+    void on_clear();
+
     void on_viewNewImageBtn_clicked();
     void on_saveImageBtn_clicked();
     void on_histBx_clicked(bool);
@@ -33,11 +42,6 @@ public:
     void on_sobBx_clicked(bool);
     void on_eroBx_clicked(bool);
     void on_diaBx_clicked(bool);
-private:
-    Ui::MainWindow *ui;
-    Image *img;
-    Enhancement *e;
-    Segmentation *s;
-    QString filename;
+
 };
 #endif // MAINWINDOW_H

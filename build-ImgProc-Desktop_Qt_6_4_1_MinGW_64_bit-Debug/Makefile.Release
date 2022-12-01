@@ -19,7 +19,7 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++1z -Wall -Wextra -Wextr
 INCPATH       = -I../ImgProc -I. -I"C:/Program Files (x86)/opencv/build/include" -I"C:/Program Files (x86)/opencv/build/x64/vc14" -IC:/Qt/6.4.1/mingw_64/include -IC:/Qt/6.4.1/mingw_64/include/QtWidgets -IC:/Qt/6.4.1/mingw_64/include/QtGui -IC:/Qt/6.4.1/mingw_64/include/QtCore -Irelease -I. -I/include -IC:/Qt/6.4.1/mingw_64/mkspecs/win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        "C:\Program Files (x86)\opencv\build\bin\*.dll" -L"C:\Program Files (x86)\opencv\build\x64\vc14\lib" -lopencv_world460 C:\Qt\6.4.1\mingw_64\lib\libQt6Widgets.a C:\Qt\6.4.1\mingw_64\lib\libQt6Gui.a C:\Qt\6.4.1\mingw_64\lib\libQt6Core.a -lmingw32 C:\Qt\6.4.1\mingw_64\lib\libQt6EntryPoint.a -lshell32  
+LIBS        =        "C:\Program Files (x86)\opencv\build\x64\vc14\bin\*.lib" -L"C:\Program Files (x86)\opencv\build\x64\vc14\lib" -lopencv_world460 C:\Qt\6.4.1\mingw_64\lib\libQt6Widgets.a C:\Qt\6.4.1\mingw_64\lib\libQt6Gui.a C:\Qt\6.4.1\mingw_64\lib\libQt6Core.a -lmingw32 C:\Qt\6.4.1\mingw_64\lib\libQt6EntryPoint.a -lshell32  
 QMAKE         = C:\Qt\6.4.1\mingw_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -1389,7 +1389,9 @@ release/mainwindow.o: ../ImgProc/mainwindow.cpp ../ImgProc/mainwindow.h \
 		C:/Qt/6.4.1/mingw_64/include/QtCore/qdatetime.h \
 		C:/Qt/6.4.1/mingw_64/include/QtCore/qcalendar.h \
 		C:/Qt/6.4.1/mingw_64/include/QtCore/qlocale.h \
-		C:/Qt/6.4.1/mingw_64/include/QtWidgets/qdialog.h
+		C:/Qt/6.4.1/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.4.1/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.4.1/mingw_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\ImgProc\mainwindow.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 

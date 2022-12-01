@@ -44,7 +44,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Open Image</string>
+     <string>Load</string>
     </property>
    </widget>
    <widget class="QPushButton" name="viewImageBtn">
@@ -266,7 +266,7 @@
    <widget class="QPushButton" name="viewNewImageBtn">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>270</x>
       <y>410</y>
       <width>161</width>
       <height>31</height>
@@ -284,7 +284,7 @@
    <widget class="QPushButton" name="saveImageBtn">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>460</x>
       <y>410</y>
       <width>121</width>
       <height>31</height>
@@ -548,7 +548,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Load Image</string>
+     <string>Browse</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="threshVal">
@@ -584,6 +584,24 @@
      <string>Kernel size</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="clearBtn">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>410</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Clear</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
@@ -592,7 +610,7 @@
      <x>0</x>
      <y>0</y>
      <width>724</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
