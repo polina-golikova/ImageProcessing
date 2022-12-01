@@ -22,13 +22,13 @@ void Enhancement::histogramEquilization()
 void Enhancement::lowPassFilter()
 {
     Mat dst;
-    GaussianBlur( *img->newImg, dst, Size(1, 1), 0 );
+    blur(*img->newImg, dst, Size(3, 3), Point(-1, -1), BORDER_DEFAULT);
     *img->newImg = dst;
 }
 
 void Enhancement::highPassFilter()
 {
     Mat dst;
-    GaussianBlur( *img->newImg, dst, Size(1, 1), 0 );
-    *img->newImg = *img->newImg - dst;
+    blur(*img->newImg, dst, Size(3, 3), Point(-1, -1), BORDER_DEFAULT);
+    addWeighted(*img->newImg, 1.5, dst, -0.5, 0, *img->newImg);
 }

@@ -34,21 +34,22 @@ Image::~Image()
     delete ogImg;
 }
 
-void Image::displayImg()
-{
-    // show image
-    cv::imshow("Image", *newImg);
+void Image::displayImg() {
+  // show image
+  std::string title = "Image";
+  cv::imshow(title, *newImg);
 }
 
 void Image::displayOgImg()
 {
     // show image
-    cv::imshow("Image", *ogImg);
+    cv::imshow("Original Image", *ogImg);
 }
 
 void Image::reset()
 {
-    newImg = ogImg;
+    newImg = new Mat;
+    *newImg = *ogImg;
 }
 
 // getters for height and width
