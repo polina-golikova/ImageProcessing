@@ -23,25 +23,13 @@ private:
     Enhancement *e;
     Segmentation *s;
     QString filename;
+    std::string modifier;
 private slots:
     void on_openImageBtn();
     void on_filePathTxt();
     void on_viewImageBtn();
     void on_clear();
-
-    void on_viewNewImageBtn_clicked();
-    void on_saveImageBtn_clicked();
-    void on_histBx_clicked(bool);
-    void on_hpBx_clicked(bool);
-    void on_lpBx_clicked(bool);
-    void on_threshBx_clicked(bool);
-    void on_kirBx_clicked(bool);
-    void on_gausBx_clicked(bool);
-    void on_prewBx_clicked(bool);
-    void on_waterBx_clicked(bool);
-    void on_sobBx_clicked(bool);
-    void on_eroBx_clicked(bool);
-    void on_diaBx_clicked(bool);
-
+    void on_viewNewImageBtn();
+    void on_saveImageBtn();
 };
 #endif // MAINWINDOW_H

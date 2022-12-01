@@ -22,10 +22,10 @@ public:
     double getHeight();
     double getWidth();
     void displayOgImg();
-    void displayImg();
+    void displayImg(std::string);
     void makeGray();
     void makeRGB();
-    void saveImage();
+    void saveImage(std::string);
     void reset();
     Mat* getImg();
     Mat* newImg;

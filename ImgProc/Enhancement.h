@@ -12,8 +12,8 @@ public:
     Enhancement(Image *newImg);
     ~Enhancement();
     void histogramEquilization();
-    void lowPassFilter();
-    void highPassFilter();
+    void lowPassFilter(uint32_t);
+    void highPassFilter(uint32_t);
 private:
     Image *img;
 };

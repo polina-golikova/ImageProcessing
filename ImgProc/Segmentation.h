@@ -11,13 +11,14 @@ class Segmentation {
 public:
     Segmentation(Image *newImg);
     ~Segmentation();
+    void gauss(uint32_t);
     void thresh(uint32_t);
-    void kirsch(uint32_t kern);
-    void prewitt(uint32_t kern);
-    void sobel(uint32_t kern);
+    void kirsch(uint32_t);
+    void prewitt(uint32_t);
+    void sobel(uint32_t);
     void watershed();
-    void dialation(uint32_t kern);
-    void erosion(uint32_t kern);
+    void dialation(uint32_t);
+    void erosion(uint32_t);
 
 private:
     Image *img;

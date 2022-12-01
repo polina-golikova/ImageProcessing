@@ -34,9 +34,9 @@ Image::~Image()
     delete ogImg;
 }
 
-void Image::displayImg() {
+void Image::displayImg(std::string commands) {
   // show image
-  std::string title = "Image";
+  std::string title = "Image" + commands;
   cv::imshow(title, *newImg);
 }
 
@@ -57,12 +57,14 @@ double Image::getHeight() { return height; }
 
 double Image::getWidth() { return width; }
 
-void Image::saveImage()
+void Image::saveImage(std::string commands)
 {
     // Undo grayscale on img
     makeRGB();
+
+    std::string name = "Image" + commands + ".jpg";
     // writing the image to a defined location as JPEG
-    bool check = imwrite("..path\\MyImage.jpg", *newImg);
+    bool check = imwrite(name, *newImg);
 
     // if the image is not saved
     if (check == false) {
@@ -81,6 +83,5 @@ void Image::makeGray()
 
 void Image::makeRGB()
 {
-    // Make grayscale image RGB
-    cvtColor(*newImg, *newImg, COLOR_GRAY2BGR);
+    cvtColor(*newImg, *newImg, COLOR_GRAY2RGB);
 }

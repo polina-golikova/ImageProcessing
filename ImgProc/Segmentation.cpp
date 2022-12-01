@@ -27,6 +27,11 @@ void Segmentation::kirsch(uint32_t kern)
 
 }
 
+void Segmentation::gauss(uint32_t kern)
+{
+
+}
+
 void Segmentation::prewitt(uint32_t kern)
 {
 

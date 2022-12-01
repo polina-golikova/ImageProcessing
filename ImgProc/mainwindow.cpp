@@ -20,24 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->loadImgBtn, SIGNAL(clicked()), this,SLOT(on_filePathTxt()));
     connect(ui->openImageBtn, SIGNAL(clicked()), this, SLOT(on_openImageBtn()));
     connect(ui->viewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewImageBtn()));
-    connect(ui->viewNewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewNewImageBtn_clicked()));
-    connect(ui->saveImageBtn, SIGNAL(clicked()), this, SLOT(on_saveImageBtn_clicked()));
+    connect(ui->viewNewImageBtn, SIGNAL(clicked()), this, SLOT(on_viewNewImageBtn()));
+    connect(ui->saveImageBtn, SIGNAL(clicked()), this, SLOT(on_saveImageBtn()));
     connect(ui->clearBtn, SIGNAL(clicked()), this, SLOT(on_clear()));
-
-    // Enhancement check boxes
-    connect(ui->histBx, SIGNAL(clicked(bool)), this, SLOT(on_histBx_clicked(bool)));
-    connect(ui->hpBx, SIGNAL(clicked(bool)), this, SLOT(on_hpBx_clicked(bool)));
-    connect(ui->lpBx, SIGNAL(clicked(bool)), this, SLOT(on_lpBx_clicked(bool)));
-
-    // Segmentation check boxes
-    connect(ui->threshBx, SIGNAL(clicked(bool)), this, SLOT(on_threshBx_clicked(bool)));
-    connect(ui->kirBx, SIGNAL(clicked(bool)), this, SLOT(on_kirBx_clicked(bool)));
-    connect(ui->gausBx, SIGNAL(clicked(bool)), this, SLOT(on_gausBx_clicked(bool)));
-    connect(ui->prewBx, SIGNAL(clicked(bool)), this, SLOT(on_prewBx_clicked(bool)));
-    connect(ui->waterBx, SIGNAL(clicked(bool)), this, SLOT(on_waterBx_clicked(bool)));
-    connect(ui->sobBx, SIGNAL(clicked(bool)), this, SLOT(on_sobBx_clicked(bool)));
-    connect(ui->eroBx, SIGNAL(clicked(bool)), this, SLOT(on_eroBx_clicked(bool)));
-    connect(ui->diaBx, SIGNAL(clicked(bool)), this, SLOT(on_diaBx_clicked(bool)));
 }
 
 //  MainWindow: creates MainWindow destructor to deallocate memory
@@ -54,7 +39,7 @@ MainWindow::~MainWindow()
     delete s;
 }
 
-//  on_filePathTxt_clicked: saves user defined image file path and outputs to window
+//  on_filePathTxt: saves user defined image file path and outputs to window
 //
 //  Input:
 //  Output:
@@ -67,7 +52,7 @@ void MainWindow::on_filePathTxt()
     ui->filePathTxt->setPlainText(filename);
 }
 
-//  on_openImageBtn_clicked: creates Img* obj using filepath to the image
+//  on_openImageBtn: creates Img* obj using filepath to the image
 //
 //  Input:
 //  Output:
@@ -81,6 +66,7 @@ void MainWindow::on_openImageBtn()
 
 void MainWindow::on_clear()
 {
+    modifier = "";
     ui->histBx->setCheckState(Qt::Unchecked);
     ui->hpBx->setCheckState(Qt::Unchecked);
     ui->lpBx->setCheckState(Qt::Unchecked);
@@ -92,11 +78,23 @@ void MainWindow::on_clear()
     ui->sobBx->setCheckState(Qt::Unchecked);
     ui->eroBx->setCheckState(Qt::Unchecked);
     ui->diaBx->setCheckState(Qt::Unchecked);
+
+    ui->hpKern->clear();
+    ui->lpKern->clear();
+    ui->threshVal->clear();
+    ui->gausKern->clear();
+    ui->kirKern->clear();
+    ui->preKern->clear();
+    ui->sobKern->clear();
+    ui->eroKern->clear();
+    ui->diaKern->clear();
+
     img->reset();
+
     img->makeGray();
 }
 
-//  on_viewImageBtn_clicked: displays new window with Img* image obj
+//  on_viewImageBtn: displays new window with Img* image obj
 //
 //  Input:
 //  Output:
@@ -106,99 +104,69 @@ void MainWindow::on_viewImageBtn()
     img->displayOgImg();
 }
 
-void MainWindow::on_viewNewImageBtn_clicked()
+void MainWindow::on_viewNewImageBtn()
 {
-    img->displayImg();
-}
-
-void MainWindow::on_saveImageBtn_clicked()
-{
-    img->saveImage();
-}
-
-void MainWindow::on_histBx_clicked(bool checked)
-{
-    if (checked)
+    modifier = "";
+    if (ui->histBx->isChecked())
     {
         e->histogramEquilization();
+        modifier += " hist equil";
     }
-}
-
-void MainWindow::on_hpBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->hpBx->isChecked())
     {
-        e->highPassFilter();
+        e->highPassFilter(ui->hpKern->text().toInt());
+        modifier = modifier +  " hp " + ui->hpKern->text().toStdString();
     }
-}
-
-void MainWindow::on_lpBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->lpBx->isChecked())
     {
-        e->lowPassFilter();
+        e->lowPassFilter(ui->lpKern->text().toInt());
+        modifier = modifier +  " lp " + ui->lpKern->text().toStdString();
     }
-}
-
-void MainWindow::on_threshBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->threshBx->isChecked())
     {
         s->thresh(ui->threshVal->text().toInt());
+        modifier += " thresh";
     }
-}
-
-void MainWindow::on_kirBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->kirBx->isChecked())
     {
-
+        s->kirsch(ui->kirKern->text().toInt());
+        modifier = modifier +  " kir " + ui->kirKern->text().toStdString();
     }
-}
-void MainWindow::on_gausBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->gausBx->isChecked())
     {
-
+        s->gauss(ui->gausKern->text().toInt());
+        modifier = modifier +  " gauss " + ui->gausKern->text().toStdString();
     }
-}
-
-void MainWindow::on_prewBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->prewBx->isChecked())
     {
-
+        s->prewitt(ui->preKern->text().toInt());
+        modifier = modifier +  " prew " + ui->preKern->text().toStdString();
     }
-}
-
-void MainWindow::on_waterBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->waterBx->isChecked())
     {
-
+        s->watershed();
+        modifier +=  " water";
     }
-}
-
-void MainWindow::on_sobBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->sobBx->isChecked())
     {
-
+        s->sobel(ui->sobKern->text().toInt());
+        modifier = modifier +  " sob " + ui->sobKern->text().toStdString();
     }
-}
-
-void MainWindow::on_eroBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->eroBx->isChecked())
     {
-
+        s->erosion(ui->eroKern->text().toInt());
+        modifier = modifier +  " erosion " + ui->eroKern->text().toStdString();
     }
-}
-
-void MainWindow::on_diaBx_clicked(bool checked)
-{
-    if (checked)
+    if (ui->diaBx->isChecked())
     {
-
+        s->dialation(ui->diaKern->text().toInt());
+        modifier = modifier +  " dialation " + ui->diaKern->text().toStdString();
     }
+    img->displayImg(modifier);
 }
+
+void MainWindow::on_saveImageBtn()
+{
+    img->saveImage(modifier);
+}
+
