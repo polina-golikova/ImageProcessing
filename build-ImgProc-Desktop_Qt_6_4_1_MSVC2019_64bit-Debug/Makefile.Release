@@ -16,10 +16,10 @@ CXX           = cl
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DNDEBUG -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -utf-8 -W3 -w44456 -w44457 -w44458 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -O2 -MD -std:c++17 -utf-8 -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
-INCPATH       = -I..\ImgProc -I. -I"C:\Program Files (x86)\opencv\build\include" -IC:\Qt\6.4.1\msvc2019_64\include -IC:\Qt\6.4.1\msvc2019_64\include\QtWidgets -IC:\Qt\6.4.1\msvc2019_64\include\QtGui -IC:\Qt\6.4.1\msvc2019_64\include\QtCore -Irelease -I. -I/include -IC:\Qt\6.4.1\msvc2019_64\mkspecs\win32-msvc 
+INCPATH       = -I..\ImgProc -I. -I"C:\Program Files (x86)\opencv\build\include" -I"C:\Program Files (x86)\opencv\build\x64\vc14" -IC:\Qt\6.4.1\msvc2019_64\include -IC:\Qt\6.4.1\msvc2019_64\include\QtWidgets -IC:\Qt\6.4.1\msvc2019_64\include\QtGui -IC:\Qt\6.4.1\msvc2019_64\include\QtCore -Irelease -I. -I/include -IC:\Qt\6.4.1\msvc2019_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /OPT:REF /OPT:ICF /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = "C:\Program Files (x86)\opencv\build\bin\*.dll" C:\Qt\6.4.1\msvc2019_64\lib\Qt6Widgets.lib C:\Qt\6.4.1\msvc2019_64\lib\Qt6Gui.lib C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core.lib C:\Qt\6.4.1\msvc2019_64\lib\Qt6EntryPoint.lib shell32.lib  
+LIBS          = "C:\Program Files (x86)\opencv\build\bin\*.dll" /LIBPATH:"C:\Program Files (x86)\opencv\build\x64\vc14\lib" "C:\Program Files (x86)\opencv\build\x64\vc14\lib\opencv_world460.lib" C:\Qt\6.4.1\msvc2019_64\lib\Qt6Widgets.lib C:\Qt\6.4.1\msvc2019_64\lib\Qt6Gui.lib C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core.lib C:\Qt\6.4.1\msvc2019_64\lib\Qt6EntryPoint.lib shell32.lib  
 QMAKE         = C:\Qt\6.4.1\msvc2019_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -436,7 +436,7 @@ release\moc_mainwindow.cpp: ..\ImgProc\mainwindow.h \
 		..\ImgProc\Segmentation.h \
 		release\moc_predefs.h \
 		C:\Qt\6.4.1\msvc2019_64\bin\moc.exe
-	C:\Qt\6.4.1\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/polin/Dropbox/EE 553 fall 2022/ImageProcessing/build-ImgProc-Desktop_Qt_6_4_1_MSVC2019_64bit-Debug/release/moc_predefs.h" -IC:/Qt/6.4.1/msvc2019_64/mkspecs/win32-msvc -I"C:/Users/polin/Dropbox/EE 553 fall 2022/ImageProcessing/ImgProc" -I"C:/Program Files (x86)/opencv/build/include" -IC:/Qt/6.4.1/msvc2019_64/include -IC:/Qt/6.4.1/msvc2019_64/include/QtWidgets -IC:/Qt/6.4.1/msvc2019_64/include/QtGui -IC:/Qt/6.4.1/msvc2019_64/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include" -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\ATLMFC\include" -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\um" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\shared" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\winrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\cppwinrt" ..\ImgProc\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\6.4.1\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "C:/Users/polin/Dropbox/EE 553 fall 2022/ImageProcessing/build-ImgProc-Desktop_Qt_6_4_1_MSVC2019_64bit-Debug/release/moc_predefs.h" -IC:/Qt/6.4.1/msvc2019_64/mkspecs/win32-msvc -I"C:/Users/polin/Dropbox/EE 553 fall 2022/ImageProcessing/ImgProc" -I"C:/Program Files (x86)/opencv/build/include" -I"C:/Program Files (x86)/opencv/build/x64/vc14" -IC:/Qt/6.4.1/msvc2019_64/include -IC:/Qt/6.4.1/msvc2019_64/include/QtWidgets -IC:/Qt/6.4.1/msvc2019_64/include/QtGui -IC:/Qt/6.4.1/msvc2019_64/include/QtCore -I. -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include" -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\ATLMFC\include" -I"C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\um" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\shared" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\winrt" -I"C:\Program Files (x86)\Windows Kits\10\\include\10.0.19041.0\\cppwinrt" ..\ImgProc\mainwindow.h -o release\moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -462,111 +462,7 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 ####### Compile
 
 release\Enhancement.obj: ..\ImgProc\Enhancement.cpp ..\ImgProc\Enhancement.h \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv_modules.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvdef.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\version.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\hal\interface.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cv_cpu_dispatch.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cv_cpu_helper.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\hal\msa_macros.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\fast_math.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\base.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvstd.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvstd_wrapper.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\neon_utils.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\vsx_utils.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\check.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\traits.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\matx.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\saturate.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\types.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\mat.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\bufferpool.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\mat.inl.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\persistence.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\operations.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvstd.inl.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\utility.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\utils\instrumentation.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\utils\tls.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\optim.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\ovx.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\calib3d.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\features2d.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\miniflann.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\defines.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\config.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\affine.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\dnn.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\async.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\version.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\dict.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\layer.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\dnn.inl.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\utils\inference_engine.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\flann_base.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\general.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\matrix.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\params.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\any.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\saving.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\nn_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\result_set.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\all_indices.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\kdtree_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\dynamic_bitset.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\dist.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\heap.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\allocator.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\random.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\kdtree_single_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\kmeans_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\logger.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\composite_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\linear_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\hierarchical_clustering_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\lsh_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\lsh_table.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\autotuned_index.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\ground_truth.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\index_testing.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\timer.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\sampling.h" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\highgui.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\imgcodecs.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\videoio.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc\segmentation.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\ml.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\ml\ml.inl.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\objdetect.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\objdetect\detection_based_tracker.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\objdetect\face.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\photo.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\warpers.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\warpers.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cuda.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cuda_types.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cuda.inl.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\warpers_inl.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\matchers.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\motion_estimators.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\util.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\util_inl.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\camera.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\exposure_compensate.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\seam_finders.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\blenders.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\video.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\video\tracking.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\video\background_segm.hpp"
-
-release\Image.obj: ..\ImgProc\Image.cpp ..\ImgProc\Image.h \
+		..\ImgProc\Image.h \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv.hpp" \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv_modules.hpp" \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\core.hpp" \
@@ -674,7 +570,7 @@ release\Image.obj: ..\ImgProc\Image.cpp ..\ImgProc\Image.h \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\highgui\highgui.hpp" \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc\imgproc.hpp"
 
-release\Segmentation.obj: ..\ImgProc\Segmentation.cpp ..\ImgProc\Segmentation.h \
+release\Image.obj: ..\ImgProc\Image.cpp ..\ImgProc\Image.h \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv.hpp" \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv_modules.hpp" \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\core.hpp" \
@@ -777,7 +673,256 @@ release\Segmentation.obj: ..\ImgProc\Segmentation.cpp ..\ImgProc\Segmentation.h 
 		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\blenders.hpp" \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\video.hpp" \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\video\tracking.hpp" \
-		"C:\Program Files (x86)\opencv\build\include\opencv2\video\background_segm.hpp"
+		"C:\Program Files (x86)\opencv\build\include\opencv2\video\background_segm.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\core.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\highgui\highgui.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc\imgproc.hpp" \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\QMessageBox \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qglobal.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qconfig.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qtcore-config.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qtconfigmacros.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qtcoreexports.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qsysinfo.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qlogging.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qflags.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcompare_impl.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qatomic.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qnumeric.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qversiontagging.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qforeach.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qtgui-config.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qtguiexports.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qtwidgetsexports.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qdialog.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qwidget.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qnamespace.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qtmetamacros.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qobject.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstring.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qchar.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringview.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qbytearray.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qrefcount.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qarraydata.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qpair.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qarraydataops.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qbytearrayview.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringfwd.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringliteral.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qanystringview.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qutf8stringview.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qlist.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qiterator.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringlist.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qalgorithms.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcoreevent.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qmetatype.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcompare.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qscopeguard.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qdatastream.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qiodevicebase.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qiterable.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qmetacontainer.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qmath.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qobject_impl.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qbindingstorage.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qmargins.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qaction.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qkeysequence.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qicon.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qsize.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qpixmap.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qrect.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qpoint.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qcolor.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qrgb.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qrgba64.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qshareddata.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qimage.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qpixelformat.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qtransform.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qpolygon.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qregion.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qline.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qvariant.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qdebug.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qtextstream.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qstringconverter_base.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qmap.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qset.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qhash.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qpalette.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qbrush.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qfont.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qfontinfo.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qcursor.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qbitmap.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qevent.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qiodevice.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qpointer.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qurl.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qeventpoint.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qvector2d.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qvectornd.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qpointingdevice.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qinputdevice.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\qscreen.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\QList \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\QObject \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\QRect \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\QSize \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\QSizeF \
+		C:\Qt\6.4.1\msvc2019_64\include\QtGui\QTransform \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qnativeinterface.h
+
+release\Segmentation.obj: ..\ImgProc\Segmentation.cpp ..\ImgProc\Segmentation.h \
+		..\ImgProc\Image.h \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\opencv_modules.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvdef.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\version.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\hal\interface.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cv_cpu_dispatch.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cv_cpu_helper.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\hal\msa_macros.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\fast_math.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\base.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvstd.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvstd_wrapper.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\neon_utils.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\vsx_utils.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\check.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\traits.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\matx.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\saturate.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\types.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\mat.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\bufferpool.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\mat.inl.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\persistence.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\operations.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cvstd.inl.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\utility.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\utils\instrumentation.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\utils\tls.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\optim.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\ovx.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\calib3d.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\features2d.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\miniflann.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\defines.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\config.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\affine.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\dnn.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\async.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\version.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\dict.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\layer.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\dnn.inl.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\dnn\utils\inference_engine.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\flann_base.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\general.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\matrix.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\params.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\any.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\saving.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\nn_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\result_set.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\all_indices.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\kdtree_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\dynamic_bitset.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\dist.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\heap.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\allocator.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\random.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\kdtree_single_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\kmeans_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\logger.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\composite_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\linear_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\hierarchical_clustering_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\lsh_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\lsh_table.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\autotuned_index.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\ground_truth.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\index_testing.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\timer.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\flann\sampling.h" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\highgui.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\imgcodecs.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\videoio.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc\segmentation.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\ml.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\ml\ml.inl.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\objdetect.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\objdetect\detection_based_tracker.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\objdetect\face.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\photo.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\warpers.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\warpers.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cuda.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cuda_types.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\cuda.inl.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\warpers_inl.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\matchers.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\motion_estimators.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\util.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\util_inl.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\camera.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\exposure_compensate.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\seam_finders.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\stitching\detail\blenders.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\video.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\video\tracking.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\video\background_segm.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\core\core.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\highgui\highgui.hpp" \
+		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc\imgproc.hpp"
 
 release\main.obj: ..\ImgProc\main.cpp ..\ImgProc\mainwindow.h \
 		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\QMainWindow \
@@ -1297,7 +1442,17 @@ release\mainwindow.obj: ..\ImgProc\mainwindow.cpp ..\ImgProc\mainwindow.h \
 		"C:\Program Files (x86)\opencv\build\include\opencv2\imgproc\imgproc.hpp" \
 		..\ImgProc\Enhancement.h \
 		..\ImgProc\Segmentation.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\QFileDialog \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qfiledialog.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qdir.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qfile.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qfiledevice.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qfileinfo.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qdatetime.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qcalendar.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtCore\qlocale.h \
+		C:\Qt\6.4.1\msvc2019_64\include\QtWidgets\qdialog.h
 
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
 

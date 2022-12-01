@@ -26,8 +26,8 @@ FORMS += \
     mainwindow.ui
 
 INCLUDEPATH += "C:/Program Files (x86)/opencv/build/include/"
-LIBS += "C:/Program Files (x86)/opencv/build/bin/*.dll"
-        "C:/Program Files (x86)/opencv/build/x64/vc14/bin/*.dll"
+LIBS += "C:/Program Files (x86)/opencv/build/x64/vc14/bin/*.lib"
+        "C:/Program Files (x86)/opencv/build/x64/vc15/bin/*.lib"
 
 
 # Default rules for deployment.
