@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void printOddError();
+    void printOddError(std::string);
 private:
     Ui::MainWindow *ui;
     Image *img;
@@ -25,6 +25,8 @@ private:
     Segmentation *s;
     QString filename;
     std::string modifier;
+
+// SLOTS for all the signals used in the GUI
 private slots:
     void on_openImageBtn();
     void on_filePathTxt();

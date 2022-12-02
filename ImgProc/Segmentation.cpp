@@ -1,20 +1,31 @@
 #include "Segmentation.h"
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 
+//  Segmentation: allocates memory, sets new Image obj
+//
+//  Input:  Image - new image object
+//  Output:
+//
 Segmentation::Segmentation(Image *newImg)
 {
     img = newImg;
 }
 
+//  ~Segmentation: frees memory
+//
+//  Input:
+//  Output:
+//
 Segmentation::~Segmentation()
 {
-    // Deallocate memory
+    // Deallocate img pointer
     delete img;
 }
 
+//  thresh: binary filter, True or Fale (dark or white) depending on threshold value
+//
+//  Input:  uint32_t - threshold value, anything below this is 0 or white, anything above is black
+//  Output:
+//
 void Segmentation::thresh(uint32_t max)
 {
     Mat dst;
@@ -22,6 +33,11 @@ void Segmentation::thresh(uint32_t max)
     *img->newImg = dst;
 }
 
+//  gauss: gaussian blur filter
+//
+//  Input:  uint32_t - kernel size to do convolution with
+//  Output:
+//
 void Segmentation::gauss(uint32_t kern)
 {
     Mat dst;
@@ -29,6 +45,11 @@ void Segmentation::gauss(uint32_t kern)
     *img->newImg = dst;
 }
 
+//  sobel: segments image, distinguishing borders
+//
+//  Input:  uint32_t - kernel size to do convolution with
+//  Output:
+//
 void Segmentation::sobel(uint32_t kern)
 {
     Mat dst1, dst2;
@@ -37,6 +58,11 @@ void Segmentation::sobel(uint32_t kern)
     *img->newImg = dst1 + dst2;
 }
 
+//  dialation: expands whites and borders
+//
+//  Input:  uint32_t - kernel size to do convolution with
+//  Output:
+//
 void Segmentation::dialation(uint32_t kern)
 {
     Mat dst;
@@ -47,6 +73,11 @@ void Segmentation::dialation(uint32_t kern)
     *img->newImg = dst;
 }
 
+//  erosion: slims or trims away at whites
+//
+//  Input:  uint32_t - kernel size to do convolution with
+//  Output:
+//
 void Segmentation::erosion(uint32_t kern)
 {
     Mat dst;

@@ -39,11 +39,17 @@ MainWindow::~MainWindow()
     delete s;
 }
 
-void MainWindow::printOddError()
+//  printOddError: displays an error window box
+//
+//  Input:
+//  Output:
+//
+void MainWindow::printOddError(std::string error)
 {
     // Show error window if kernel size isn't odd
+    QString str = QString::fromStdString(error);
     QMessageBox messageBox;
-    messageBox.critical(0,"Error","Kernel must be odd and >= 0.");
+    messageBox.critical(0, "Error", str);
     messageBox.setFixedSize(500,200);
 }
 
@@ -72,9 +78,16 @@ void MainWindow::on_openImageBtn()
     s = new Segmentation(img);
 }
 
+//  on_clear: resets all inputs, checkboxes, clears & undoes processes on images, re-Grays the image
+//
+//  Input:
+//  Output:
+//
 void MainWindow::on_clear()
 {
     modifier = "";
+
+    // reset checked boxes
     ui->histBx->setCheckState(Qt::Unchecked);
     ui->hpBx->setCheckState(Qt::Unchecked);
     ui->lpBx->setCheckState(Qt::Unchecked);
@@ -83,7 +96,10 @@ void MainWindow::on_clear()
     ui->sobBx->setCheckState(Qt::Unchecked);
     ui->eroBx->setCheckState(Qt::Unchecked);
     ui->diaBx->setCheckState(Qt::Unchecked);
+    ui->brightBtn->setCheckState(Qt::Unchecked);
 
+    // clear text boxes
+    ui->brightNum->clear();
     ui->hpKern->clear();
     ui->lpKern->clear();
     ui->threshVal->clear();
@@ -92,12 +108,14 @@ void MainWindow::on_clear()
     ui->eroKern->clear();
     ui->diaKern->clear();
 
+    // reset image to original image
     img->reset();
 
+    // make image grayscale
     img->makeGray();
 }
 
-//  on_viewImageBtn: displays new window with Img* image obj
+//  on_viewImageBtn: displays new window with original loaded Img* image obj
 //
 //  Input:
 //  Output:
@@ -107,9 +125,16 @@ void MainWindow::on_viewImageBtn()
     img->displayOgImg();
 }
 
+//  on_viewNewImageBtn: calls enhancement and segmentation methods with Img* obj
+//
+//  Input:
+//  Output:
+//
 void MainWindow::on_viewNewImageBtn()
 {
     modifier = "";
+
+    // Enhancement processes
     if (ui->histBx->isChecked())
     {
         e->histogramEquilization();
@@ -125,6 +150,13 @@ void MainWindow::on_viewNewImageBtn()
         e->lowPassFilter(ui->lpKern->text().toInt());
         modifier = modifier +  " lp " + ui->lpKern->text().toStdString();
     }
+    if (ui->brightBtn->isChecked())
+    {
+        e->brightness(ui->brightNum->text().toInt());
+        modifier = modifier +  " brightness" + ui->brightNum->text().toStdString();
+    }
+
+    // Segmentation processes
     if (ui->threshBx->isChecked())
     {
         s->thresh(ui->threshVal->text().toInt());
@@ -132,20 +164,29 @@ void MainWindow::on_viewNewImageBtn()
     }
     if (ui->gausBx->isChecked())
     {
-        if ((ui->gausKern->text().toInt() > 0) && (ui->gausKern->text().toInt() % 2 == 0))
+        if ((ui->gausKern->text().toInt() > 0) && (ui->gausKern->text().toInt() % 2 == 1))
         {
             s->gauss(ui->gausKern->text().toInt());
             modifier = modifier +  " gauss " + ui->gausKern->text().toStdString();
         }
         else
         {
-            printOddError();
+            printOddError("Kernel must be >=0 and odd.");
+            return;
         }
     }
     if (ui->sobBx->isChecked())
     {
-        s->sobel(ui->sobKern->text().toInt());
-        modifier = modifier +  " sob " + ui->sobKern->text().toStdString();
+        if ((ui->sobKern->text().toInt() <= 31) && (ui->sobKern->text().toInt() % 2 == 1))
+        {
+            s->sobel(ui->sobKern->text().toInt());
+            modifier = modifier +  " sob " + ui->sobKern->text().toStdString();
+        }
+        else
+        {
+            printOddError("Kernel must be odd and <= 31");
+            return;
+        }
     }
     if (ui->eroBx->isChecked())
     {
@@ -157,9 +198,15 @@ void MainWindow::on_viewNewImageBtn()
         s->dialation(ui->diaKern->text().toInt());
         modifier = modifier +  " dialation " + ui->diaKern->text().toStdString();
     }
+    // Dislay the newly modified image
     img->displayImg(modifier);
 }
 
+//  on_saveImageBtn: saves modified image using title modifier with all the applied operations
+//
+//  Input:
+//  Output:
+//
 void MainWindow::on_saveImageBtn()
 {
     img->saveImage(modifier);

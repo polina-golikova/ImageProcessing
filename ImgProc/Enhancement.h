@@ -14,6 +14,7 @@ public:
     void histogramEquilization();
     void lowPassFilter(uint32_t);
     void highPassFilter(uint32_t);
+    void brightness(int32_t);
 private:
     Image *img;
 };

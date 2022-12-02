@@ -1,24 +1,41 @@
 #include "Enhancement.h"
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
 
+//  Enhancement: allocates memory, sets new Image obj
+//
+//  Input:  Image - new image object
+//  Output:
+//
 Enhancement::Enhancement(Image *newImg)
 {
     img = newImg;
 }
 
+//  ~Enhancement: frees memory
+//
+//  Input:
+//  Output:
+//
 Enhancement::~Enhancement()
 {
-    // Deallocate memory
+    // Deallocate img pointer
     delete img;
 }
 
+//  histogramEquilization: balances out the grayscale histogram colors
+//
+//  Input:
+//  Output:
+//
 void Enhancement::histogramEquilization()
 {
     equalizeHist( *img->newImg, *img->newImg );
 }
 
+//  lowPassFilter: low pass filter blurs images
+//
+//  Input:  uint32_t - kernel size to do convolution with
+//  Output:
+//
 void Enhancement::lowPassFilter(uint32_t kern)
 {
     Mat dst;
@@ -26,9 +43,26 @@ void Enhancement::lowPassFilter(uint32_t kern)
     *img->newImg = dst;
 }
 
+//  highPassFilter: high pass filter sharpens images
+//
+//  Input:  uint32_t - kernel size to do convolution with
+//  Output:
+//
 void Enhancement::highPassFilter(uint32_t kern)
 {
     Mat dst;
     blur(*img->newImg, dst, Size(9, 9), Point(-1, -1), BORDER_DEFAULT);
     addWeighted(*img->newImg, 1.5, dst, -0.5, 0, *img->newImg);
+}
+
+//  brightness: brightness makes images darker or brighter
+//
+//  Input:  uint32_t - brightness value to add or subtract from image
+//  Output:
+//
+void Enhancement::brightness(int32_t b)
+{
+    Mat dst;
+    img->newImg->convertTo(dst, -1, 1, b);
+    *img->newImg = dst;
 }

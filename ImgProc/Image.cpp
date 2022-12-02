@@ -85,6 +85,4 @@ void Image::makeGray()
 void Image::makeRGB()
 {
     cvtColor(*newImg, *newImg, COLOR_GRAY2BGR);
-    applyColorMap(*newImg, *newImg, COLORMAP_INFERNO);
-
 }
