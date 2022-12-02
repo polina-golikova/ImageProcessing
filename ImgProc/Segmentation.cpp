@@ -22,11 +22,6 @@ void Segmentation::thresh(uint32_t max)
     *img->newImg = dst;
 }
 
-void Segmentation::kirsch(uint32_t kern)
-{
-
-}
-
 void Segmentation::gauss(uint32_t kern)
 {
     Mat dst;
@@ -34,19 +29,12 @@ void Segmentation::gauss(uint32_t kern)
     *img->newImg = dst;
 }
 
-void Segmentation::prewitt(uint32_t kern)
-{
-
-}
-
 void Segmentation::sobel(uint32_t kern)
 {
-
-}
-
-void Segmentation::watershed()
-{
-
+    Mat dst1, dst2;
+    Sobel(*img->newImg, dst1, CV_8U, 1, 0, kern);
+    Sobel(*img->newImg, dst2, CV_8U, 0, 1, kern);
+    *img->newImg = dst1 + dst2;
 }
 
 void Segmentation::dialation(uint32_t kern)

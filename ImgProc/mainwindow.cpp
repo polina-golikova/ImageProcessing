@@ -79,10 +79,7 @@ void MainWindow::on_clear()
     ui->hpBx->setCheckState(Qt::Unchecked);
     ui->lpBx->setCheckState(Qt::Unchecked);
     ui->threshBx->setCheckState(Qt::Unchecked);
-    ui->kirBx->setCheckState(Qt::Unchecked);
     ui->gausBx->setCheckState(Qt::Unchecked);
-    ui->prewBx->setCheckState(Qt::Unchecked);
-    ui->waterBx->setCheckState(Qt::Unchecked);
     ui->sobBx->setCheckState(Qt::Unchecked);
     ui->eroBx->setCheckState(Qt::Unchecked);
     ui->diaBx->setCheckState(Qt::Unchecked);
@@ -91,8 +88,6 @@ void MainWindow::on_clear()
     ui->lpKern->clear();
     ui->threshVal->clear();
     ui->gausKern->clear();
-    ui->kirKern->clear();
-    ui->preKern->clear();
     ui->sobKern->clear();
     ui->eroKern->clear();
     ui->diaKern->clear();
@@ -135,11 +130,6 @@ void MainWindow::on_viewNewImageBtn()
         s->thresh(ui->threshVal->text().toInt());
         modifier += " thresh";
     }
-    if (ui->kirBx->isChecked())
-    {
-        s->kirsch(ui->kirKern->text().toInt());
-        modifier = modifier +  " kir " + ui->kirKern->text().toStdString();
-    }
     if (ui->gausBx->isChecked())
     {
         if ((ui->gausKern->text().toInt() > 0) && (ui->gausKern->text().toInt() % 2 == 0))
@@ -151,16 +141,6 @@ void MainWindow::on_viewNewImageBtn()
         {
             printOddError();
         }
-    }
-    if (ui->prewBx->isChecked())
-    {
-        s->prewitt(ui->preKern->text().toInt());
-        modifier = modifier +  " prew " + ui->preKern->text().toStdString();
-    }
-    if (ui->waterBx->isChecked())
-    {
-        s->watershed();
-        modifier +=  " water";
     }
     if (ui->sobBx->isChecked())
     {
