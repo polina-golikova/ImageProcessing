@@ -61,6 +61,7 @@ void Image::saveImage(std::string commands)
 {
     // Undo grayscale on img
     makeRGB();
+    displayImg("tmp");
 
     std::string name = "Image" + commands + ".jpg";
     // writing the image to a defined location as JPEG
@@ -83,5 +84,7 @@ void Image::makeGray()
 
 void Image::makeRGB()
 {
-    cvtColor(*newImg, *newImg, COLOR_GRAY2RGB);
+    cvtColor(*newImg, *newImg, COLOR_GRAY2BGR);
+    applyColorMap(*newImg, *newImg, COLORMAP_INFERNO);
+
 }

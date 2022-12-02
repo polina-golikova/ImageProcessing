@@ -39,6 +39,14 @@ MainWindow::~MainWindow()
     delete s;
 }
 
+void MainWindow::printOddError()
+{
+    // Show error window if kernel size isn't odd
+    QMessageBox messageBox;
+    messageBox.critical(0,"Error","Kernel must be odd and >= 0.");
+    messageBox.setFixedSize(500,200);
+}
+
 //  on_filePathTxt: saves user defined image file path and outputs to window
 //
 //  Input:
@@ -134,8 +142,15 @@ void MainWindow::on_viewNewImageBtn()
     }
     if (ui->gausBx->isChecked())
     {
-        s->gauss(ui->gausKern->text().toInt());
-        modifier = modifier +  " gauss " + ui->gausKern->text().toStdString();
+        if ((ui->gausKern->text().toInt() > 0) && (ui->gausKern->text().toInt() % 2 == 0))
+        {
+            s->gauss(ui->gausKern->text().toInt());
+            modifier = modifier +  " gauss " + ui->gausKern->text().toStdString();
+        }
+        else
+        {
+            printOddError();
+        }
     }
     if (ui->prewBx->isChecked())
     {
