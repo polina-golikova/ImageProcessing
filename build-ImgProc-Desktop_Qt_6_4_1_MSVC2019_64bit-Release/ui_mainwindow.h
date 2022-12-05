@@ -12,6 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -44,29 +46,35 @@ public:
     QPushButton *loadImgBtn;
     QLineEdit *threshVal;
     QPushButton *clearBtn;
-    QLineEdit *hpKern;
-    QLineEdit *lpKern;
-    QLineEdit *brightNum;
     QCheckBox *brightBtn;
     QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_3;
-    QLabel *label_12;
-    QLabel *label_13;
-    QLabel *label_14;
-    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QCheckBox *threshBx;
     QCheckBox *gausBx;
     QCheckBox *sobBx;
     QCheckBox *diaBx;
     QCheckBox *eroBx;
-    QWidget *layoutWidget2;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_5;
     QLabel *label;
     QLabel *label_11;
     QLabel *label_8;
     QLabel *label_2;
     QLabel *label_3;
+    QComboBox *colorMpBx;
+    QCheckBox *colorMpBtn;
+    QWidget *layoutWidget2;
+    QHBoxLayout *horizontalLayout;
+    QLineEdit *brightNum;
+    QLabel *label_14;
+    QWidget *layoutWidget3;
+    QHBoxLayout *horizontalLayout_2;
+    QLineEdit *lpKern;
+    QLabel *label_12;
+    QWidget *layoutWidget4;
+    QHBoxLayout *horizontalLayout_3;
+    QLineEdit *hpKern;
+    QLabel *label_13;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -97,15 +105,15 @@ public:
         viewImageBtn->setCheckable(false);
         histBx = new QCheckBox(centralwidget);
         histBx->setObjectName("histBx");
-        histBx->setGeometry(QRect(22, 142, 228, 33));
+        histBx->setGeometry(QRect(21, 143, 182, 28));
         histBx->setFont(font1);
         hpBx = new QCheckBox(centralwidget);
         hpBx->setObjectName("hpBx");
-        hpBx->setGeometry(QRect(22, 182, 161, 33));
+        hpBx->setGeometry(QRect(22, 179, 131, 28));
         hpBx->setFont(font1);
         lpBx = new QCheckBox(centralwidget);
         lpBx->setObjectName("lpBx");
-        lpBx->setGeometry(QRect(22, 222, 154, 33));
+        lpBx->setGeometry(QRect(22, 214, 127, 28));
         lpBx->setFont(font1);
         viewNewImageBtn = new QPushButton(centralwidget);
         viewNewImageBtn->setObjectName("viewNewImageBtn");
@@ -158,117 +166,164 @@ public:
         clearBtn->setGeometry(QRect(160, 390, 161, 31));
         clearBtn->setFont(font1);
         clearBtn->setCheckable(false);
-        hpKern = new QLineEdit(centralwidget);
-        hpKern->setObjectName("hpKern");
-        hpKern->setGeometry(QRect(200, 185, 59, 31));
-        hpKern->setFont(font1);
-        lpKern = new QLineEdit(centralwidget);
-        lpKern->setObjectName("lpKern");
-        lpKern->setGeometry(QRect(200, 227, 59, 31));
-        lpKern->setFont(font1);
-        brightNum = new QLineEdit(centralwidget);
-        brightNum->setObjectName("brightNum");
-        brightNum->setGeometry(QRect(200, 269, 59, 31));
-        brightNum->setFont(font1);
         brightBtn = new QCheckBox(centralwidget);
         brightBtn->setObjectName("brightBtn");
-        brightBtn->setGeometry(QRect(22, 262, 154, 33));
+        brightBtn->setGeometry(QRect(22, 249, 98, 28));
         brightBtn->setFont(font1);
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(270, 180, 94, 121));
-        verticalLayout_3 = new QVBoxLayout(layoutWidget);
-        verticalLayout_3->setObjectName("verticalLayout_3");
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label_12 = new QLabel(layoutWidget);
-        label_12->setObjectName("label_12");
-        label_12->setFont(font1);
-
-        verticalLayout_3->addWidget(label_12);
-
-        label_13 = new QLabel(layoutWidget);
-        label_13->setObjectName("label_13");
-        label_13->setFont(font1);
-
-        verticalLayout_3->addWidget(label_13);
-
-        label_14 = new QLabel(layoutWidget);
-        label_14->setObjectName("label_14");
-        label_14->setFont(font1);
-
-        verticalLayout_3->addWidget(label_14);
-
-        layoutWidget1 = new QWidget(centralwidget);
-        layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(430, 140, 145, 195));
-        verticalLayout = new QVBoxLayout(layoutWidget1);
+        layoutWidget->setGeometry(QRect(430, 140, 145, 195));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        threshBx = new QCheckBox(layoutWidget1);
+        threshBx = new QCheckBox(layoutWidget);
         threshBx->setObjectName("threshBx");
         threshBx->setFont(font1);
 
         verticalLayout->addWidget(threshBx);
 
-        gausBx = new QCheckBox(layoutWidget1);
+        gausBx = new QCheckBox(layoutWidget);
         gausBx->setObjectName("gausBx");
         gausBx->setFont(font1);
 
         verticalLayout->addWidget(gausBx);
 
-        sobBx = new QCheckBox(layoutWidget1);
+        sobBx = new QCheckBox(layoutWidget);
         sobBx->setObjectName("sobBx");
         sobBx->setFont(font1);
 
         verticalLayout->addWidget(sobBx);
 
-        diaBx = new QCheckBox(layoutWidget1);
+        diaBx = new QCheckBox(layoutWidget);
         diaBx->setObjectName("diaBx");
         diaBx->setFont(font1);
 
         verticalLayout->addWidget(diaBx);
 
-        eroBx = new QCheckBox(layoutWidget1);
+        eroBx = new QCheckBox(layoutWidget);
         eroBx->setObjectName("eroBx");
         eroBx->setFont(font1);
 
         verticalLayout->addWidget(eroBx);
 
-        layoutWidget2 = new QWidget(centralwidget);
-        layoutWidget2->setObjectName("layoutWidget2");
-        layoutWidget2->setGeometry(QRect(640, 144, 160, 201));
-        verticalLayout_5 = new QVBoxLayout(layoutWidget2);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(640, 144, 160, 201));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget1);
         verticalLayout_5->setObjectName("verticalLayout_5");
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(layoutWidget2);
+        label = new QLabel(layoutWidget1);
         label->setObjectName("label");
         label->setFont(font1);
 
         verticalLayout_5->addWidget(label);
 
-        label_11 = new QLabel(layoutWidget2);
+        label_11 = new QLabel(layoutWidget1);
         label_11->setObjectName("label_11");
         label_11->setFont(font1);
 
         verticalLayout_5->addWidget(label_11);
 
-        label_8 = new QLabel(layoutWidget2);
+        label_8 = new QLabel(layoutWidget1);
         label_8->setObjectName("label_8");
         label_8->setFont(font1);
 
         verticalLayout_5->addWidget(label_8);
 
-        label_2 = new QLabel(layoutWidget2);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName("label_2");
         label_2->setFont(font1);
 
         verticalLayout_5->addWidget(label_2);
 
-        label_3 = new QLabel(layoutWidget2);
+        label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName("label_3");
         label_3->setFont(font1);
 
         verticalLayout_5->addWidget(label_3);
+
+        colorMpBx = new QComboBox(centralwidget);
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->addItem(QString());
+        colorMpBx->setObjectName("colorMpBx");
+        colorMpBx->setGeometry(QRect(160, 286, 110, 24));
+        colorMpBtn = new QCheckBox(centralwidget);
+        colorMpBtn->setObjectName("colorMpBtn");
+        colorMpBtn->setGeometry(QRect(22, 284, 98, 28));
+        colorMpBtn->setFont(font1);
+        layoutWidget2 = new QWidget(centralwidget);
+        layoutWidget2->setObjectName("layoutWidget2");
+        layoutWidget2->setGeometry(QRect(160, 249, 170, 31));
+        horizontalLayout = new QHBoxLayout(layoutWidget2);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        brightNum = new QLineEdit(layoutWidget2);
+        brightNum->setObjectName("brightNum");
+        brightNum->setFont(font1);
+
+        horizontalLayout->addWidget(brightNum);
+
+        label_14 = new QLabel(layoutWidget2);
+        label_14->setObjectName("label_14");
+        label_14->setFont(font1);
+
+        horizontalLayout->addWidget(label_14);
+
+        layoutWidget3 = new QWidget(centralwidget);
+        layoutWidget3->setObjectName("layoutWidget3");
+        layoutWidget3->setGeometry(QRect(160, 214, 208, 31));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget3);
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        lpKern = new QLineEdit(layoutWidget3);
+        lpKern->setObjectName("lpKern");
+        lpKern->setFont(font1);
+
+        horizontalLayout_2->addWidget(lpKern);
+
+        label_12 = new QLabel(layoutWidget3);
+        label_12->setObjectName("label_12");
+        label_12->setFont(font1);
+
+        horizontalLayout_2->addWidget(label_12);
+
+        layoutWidget4 = new QWidget(centralwidget);
+        layoutWidget4->setObjectName("layoutWidget4");
+        layoutWidget4->setGeometry(QRect(160, 179, 208, 31));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget4);
+        horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        hpKern = new QLineEdit(layoutWidget4);
+        hpKern->setObjectName("hpKern");
+        hpKern->setFont(font1);
+
+        horizontalLayout_3->addWidget(hpKern);
+
+        label_13 = new QLabel(layoutWidget4);
+        label_13->setObjectName("label_13");
+        label_13->setFont(font1);
+
+        horizontalLayout_3->addWidget(label_13);
 
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
@@ -295,9 +350,6 @@ public:
         loadImgBtn->setText(QCoreApplication::translate("MainWindow", "Browse", nullptr));
         clearBtn->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
         brightBtn->setText(QCoreApplication::translate("MainWindow", "Brightness", nullptr));
-        label_12->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
-        label_13->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
-        label_14->setText(QCoreApplication::translate("MainWindow", "Units", nullptr));
         threshBx->setText(QCoreApplication::translate("MainWindow", "Thresholding", nullptr));
         gausBx->setText(QCoreApplication::translate("MainWindow", "Gaussian", nullptr));
         sobBx->setText(QCoreApplication::translate("MainWindow", "Sobel", nullptr));
@@ -308,6 +360,33 @@ public:
         label_8->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
+        colorMpBx->setItemText(0, QCoreApplication::translate("MainWindow", "Autumn", nullptr));
+        colorMpBx->setItemText(1, QCoreApplication::translate("MainWindow", "Bone", nullptr));
+        colorMpBx->setItemText(2, QCoreApplication::translate("MainWindow", "Jet", nullptr));
+        colorMpBx->setItemText(3, QCoreApplication::translate("MainWindow", "Winter", nullptr));
+        colorMpBx->setItemText(4, QCoreApplication::translate("MainWindow", "Rainbow", nullptr));
+        colorMpBx->setItemText(5, QCoreApplication::translate("MainWindow", "Ocean", nullptr));
+        colorMpBx->setItemText(6, QCoreApplication::translate("MainWindow", "Summer", nullptr));
+        colorMpBx->setItemText(7, QCoreApplication::translate("MainWindow", "Spring", nullptr));
+        colorMpBx->setItemText(8, QCoreApplication::translate("MainWindow", "Cool", nullptr));
+        colorMpBx->setItemText(9, QCoreApplication::translate("MainWindow", "HSV", nullptr));
+        colorMpBx->setItemText(10, QCoreApplication::translate("MainWindow", "Pink", nullptr));
+        colorMpBx->setItemText(11, QCoreApplication::translate("MainWindow", "Hot", nullptr));
+        colorMpBx->setItemText(12, QCoreApplication::translate("MainWindow", "Parula", nullptr));
+        colorMpBx->setItemText(13, QCoreApplication::translate("MainWindow", "Magma", nullptr));
+        colorMpBx->setItemText(14, QCoreApplication::translate("MainWindow", "Inferno", nullptr));
+        colorMpBx->setItemText(15, QCoreApplication::translate("MainWindow", "Plasma", nullptr));
+        colorMpBx->setItemText(16, QCoreApplication::translate("MainWindow", "Viridis", nullptr));
+        colorMpBx->setItemText(17, QCoreApplication::translate("MainWindow", "Cividis", nullptr));
+        colorMpBx->setItemText(18, QCoreApplication::translate("MainWindow", "Twilight", nullptr));
+        colorMpBx->setItemText(19, QCoreApplication::translate("MainWindow", "TwilightShifted", nullptr));
+        colorMpBx->setItemText(20, QCoreApplication::translate("MainWindow", "Turbo", nullptr));
+        colorMpBx->setItemText(21, QCoreApplication::translate("MainWindow", "DeepGreen", nullptr));
+
+        colorMpBtn->setText(QCoreApplication::translate("MainWindow", "Color Map", nullptr));
+        label_14->setText(QCoreApplication::translate("MainWindow", "Units", nullptr));
+        label_12->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
+        label_13->setText(QCoreApplication::translate("MainWindow", "Kernel size", nullptr));
     } // retranslateUi
 
 };

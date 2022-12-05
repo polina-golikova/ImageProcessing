@@ -77,10 +77,10 @@
    <widget class="QCheckBox" name="histBx">
     <property name="geometry">
      <rect>
-      <x>22</x>
-      <y>142</y>
-      <width>228</width>
-      <height>33</height>
+      <x>21</x>
+      <y>143</y>
+      <width>182</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
@@ -96,9 +96,9 @@
     <property name="geometry">
      <rect>
       <x>22</x>
-      <y>182</y>
-      <width>161</width>
-      <height>33</height>
+      <y>179</y>
+      <width>131</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
@@ -114,9 +114,9 @@
     <property name="geometry">
      <rect>
       <x>22</x>
-      <y>222</y>
-      <width>154</width>
-      <height>33</height>
+      <y>214</y>
+      <width>127</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
@@ -326,58 +326,13 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLineEdit" name="hpKern">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>185</y>
-      <width>59</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lpKern">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>227</y>
-      <width>59</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="brightNum">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>269</y>
-      <width>59</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-   </widget>
    <widget class="QCheckBox" name="brightBtn">
     <property name="geometry">
      <rect>
       <x>22</x>
-      <y>262</y>
-      <width>154</width>
-      <height>33</height>
+      <y>249</y>
+      <width>98</width>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
@@ -388,54 +343,6 @@
     <property name="text">
      <string>Brightness</string>
     </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>180</y>
-      <width>94</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLabel" name="label_12">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Kernel size</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_13">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Kernel size</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_14">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Units</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
@@ -569,6 +476,243 @@
      </item>
      <item>
       <widget class="QLabel" name="label_3">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kernel size</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QComboBox" name="colorMpBx">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>286</y>
+      <width>110</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Autumn</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Bone</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Jet</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Winter</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Rainbow</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ocean</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Summer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Spring</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cool</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>HSV</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Pink</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hot</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Parula</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Magma</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Inferno</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Plasma</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Viridis</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cividis</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Twilight</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>TwilightShifted</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Turbo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>DeepGreen</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QCheckBox" name="colorMpBtn">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>284</y>
+      <width>98</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Color Map</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>249</y>
+      <width>170</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="brightNum">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_14">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Units</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>214</y>
+      <width>208</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLineEdit" name="lpKern">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_12">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Kernel size</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>179</y>
+      <width>208</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLineEdit" name="hpKern">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_13">
        <property name="font">
         <font>
          <pointsize>12</pointsize>

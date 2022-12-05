@@ -31,7 +31,7 @@ void Enhancement::histogramEquilization()
     equalizeHist( *img->newImg, *img->newImg );
 }
 
-//  lowPassFilter: low pass filter blurs images
+//  lowPassFilter: low pass filter blurs images, average blur filter
 //
 //  Input:  uint32_t - kernel size to do convolution with
 //  Output:
@@ -43,7 +43,7 @@ void Enhancement::lowPassFilter(uint32_t kern)
     *img->newImg = dst;
 }
 
-//  highPassFilter: high pass filter sharpens images
+//  highPassFilter: high pass filter sharpens images, subtracts average filter from original img
 //
 //  Input:  uint32_t - kernel size to do convolution with
 //  Output:
@@ -64,5 +64,17 @@ void Enhancement::brightness(int32_t b)
 {
     Mat dst;
     img->newImg->convertTo(dst, -1, 1, b);
+    *img->newImg = dst;
+}
+
+//  colorMap: applies color set to a grayscale img
+//
+//  Input:  Color enum value for a specific color map to apply
+//  Output:
+//
+void Enhancement::colorMap(int cMap)
+{
+    Mat dst;
+    applyColorMap(*img->newImg, dst, cMap);
     *img->newImg = dst;
 }

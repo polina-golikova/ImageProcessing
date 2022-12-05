@@ -15,6 +15,7 @@ public:
     void lowPassFilter(uint32_t);
     void highPassFilter(uint32_t);
     void brightness(int32_t);
+    void colorMap(int cMap);
 private:
     Image *img;
 };

@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->clearBtn, SIGNAL(clicked()), this, SLOT(on_clear()));
 }
 
-//  MainWindow: creates MainWindow destructor to deallocate memory
+//  ~MainWindow: deallocates memory
 //
 //  Input:
 //  Output:
@@ -97,6 +97,7 @@ void MainWindow::on_clear()
     ui->eroBx->setCheckState(Qt::Unchecked);
     ui->diaBx->setCheckState(Qt::Unchecked);
     ui->brightBtn->setCheckState(Qt::Unchecked);
+    ui->colorMpBtn->setCheckState(Qt::Unchecked);
 
     // clear text boxes
     ui->brightNum->clear();
@@ -153,14 +154,114 @@ void MainWindow::on_viewNewImageBtn()
     if (ui->brightBtn->isChecked())
     {
         e->brightness(ui->brightNum->text().toInt());
-        modifier = modifier +  " brightness" + ui->brightNum->text().toStdString();
+        modifier = modifier +  " brightness " + ui->brightNum->text().toStdString();
+    }
+    if (ui->colorMpBtn->isChecked())
+    {
+        if (ui->colorMpBx->currentText().toStdString() == "Autumn")
+        {
+            e->colorMap(COLORMAP_AUTUMN);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Bone")
+        {
+            e->colorMap(COLORMAP_BONE);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Jet")
+        {
+            e->colorMap(COLORMAP_JET);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Winter")
+        {
+            e->colorMap(COLORMAP_WINTER);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Rainbow")
+        {
+            e->colorMap(COLORMAP_RAINBOW);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Ocean")
+        {
+            e->colorMap(COLORMAP_OCEAN);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Summer")
+        {
+            e->colorMap(COLORMAP_SUMMER);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Spring")
+        {
+            e->colorMap(COLORMAP_SPRING);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Cool")
+        {
+            e->colorMap(COLORMAP_COOL);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "HSV")
+        {
+            e->colorMap(COLORMAP_HSV);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Pink")
+        {
+            e->colorMap(COLORMAP_PINK);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Hot")
+        {
+            e->colorMap(COLORMAP_HOT);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Parula")
+        {
+            e->colorMap(COLORMAP_PARULA);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Magma")
+        {
+            e->colorMap(COLORMAP_MAGMA);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Inferno")
+        {
+            e->colorMap(COLORMAP_INFERNO);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Plasma")
+        {
+            e->colorMap(COLORMAP_PLASMA);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Viridis")
+        {
+            e->colorMap(COLORMAP_VIRIDIS);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Cividis")
+        {
+            e->colorMap(COLORMAP_CIVIDIS);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Twilight")
+        {
+            e->colorMap(COLORMAP_TWILIGHT);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "TwilightShifted")
+        {
+            e->colorMap(COLORMAP_TWILIGHT_SHIFTED);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "Turbo")
+        {
+            e->colorMap(COLORMAP_TURBO);
+        }
+        else if (ui->colorMpBx->currentText().toStdString() == "DeepGreen")
+        {
+            e->colorMap(COLORMAP_DEEPGREEN);
+        }
     }
 
     // Segmentation processes
     if (ui->threshBx->isChecked())
     {
-        s->thresh(ui->threshVal->text().toInt());
-        modifier += " thresh";
+        if (ui->threshVal->text().toInt() >= 0 && ui->threshVal->text().toInt() <= 255)
+        {
+            s->thresh(ui->threshVal->text().toInt());
+            modifier += " thresh";
+        }
+        else
+        {
+            printOddError("Threshold must be within 0-255.");
+            return;
+        }
+
     }
     if (ui->gausBx->isChecked())
     {
