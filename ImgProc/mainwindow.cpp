@@ -46,7 +46,7 @@ MainWindow::~MainWindow()
 //
 void MainWindow::printOddError(std::string error)
 {
-    // Show error window if kernel size isn't odd
+    // Show error window if kernel size isn't odd or other unique text error
     QString str = QString::fromStdString(error);
     QMessageBox messageBox;
     messageBox.critical(0, "Error", str);
@@ -60,13 +60,15 @@ void MainWindow::printOddError(std::string error)
 //
 void MainWindow::on_filePathTxt()
 {
-    filename = QFileDialog::getOpenFileName(this, "Choose File");
+    filename = QFileDialog::getOpenFileName(this, "Choose File",
+                                            "//images/",
+                                            tr("*.png *.jpg *.jpeg *.bmp *.dib *.jpe *.jp2 *.webp *.pbm, *.pgm, *.ppm *.pxm, *.pnm *.sr, *.ras *.tiff, *.tif *.exr *.hdr, *.pic"));
 
     ui->filePathTxt->clear();
     ui->filePathTxt->setPlainText(filename);
 }
 
-//  on_openImageBtn: creates Img* obj using filepath to the image
+//  on_openImageBtn: creates Img* obj using filepath to the image, and Enhancement and Segmentation objs with Img*
 //
 //  Input:
 //  Output:
@@ -136,26 +138,32 @@ void MainWindow::on_viewNewImageBtn()
     modifier = "";
 
     // Enhancement processes
+
+    // Histogram
     if (ui->histBx->isChecked())
     {
         e->histogramEquilization();
         modifier += " hist equil";
     }
+    // High Pass
     if (ui->hpBx->isChecked())
     {
         e->highPassFilter(ui->hpKern->text().toInt());
         modifier = modifier +  " hp " + ui->hpKern->text().toStdString();
     }
+    // Low Pass
     if (ui->lpBx->isChecked())
     {
         e->lowPassFilter(ui->lpKern->text().toInt());
         modifier = modifier +  " lp " + ui->lpKern->text().toStdString();
     }
+    // Brightness
     if (ui->brightBtn->isChecked())
     {
         e->brightness(ui->brightNum->text().toInt());
         modifier = modifier +  " brightness " + ui->brightNum->text().toStdString();
     }
+    // Color map
     if (ui->colorMpBtn->isChecked())
     {
         if (ui->colorMpBx->currentText().toStdString() == "Autumn")
@@ -249,6 +257,8 @@ void MainWindow::on_viewNewImageBtn()
     }
 
     // Segmentation processes
+
+    // Threshold
     if (ui->threshBx->isChecked())
     {
         if (ui->threshVal->text().toInt() >= 0 && ui->threshVal->text().toInt() <= 255)
@@ -263,6 +273,7 @@ void MainWindow::on_viewNewImageBtn()
         }
 
     }
+    // Gaussian Blur
     if (ui->gausBx->isChecked())
     {
         if ((ui->gausKern->text().toInt() > 0) && (ui->gausKern->text().toInt() % 2 == 1))
@@ -276,6 +287,7 @@ void MainWindow::on_viewNewImageBtn()
             return;
         }
     }
+    // Sobel
     if (ui->sobBx->isChecked())
     {
         if ((ui->sobKern->text().toInt() <= 31) && (ui->sobKern->text().toInt() % 2 == 1))
@@ -289,16 +301,19 @@ void MainWindow::on_viewNewImageBtn()
             return;
         }
     }
+    // Erosion
     if (ui->eroBx->isChecked())
     {
         s->erosion(ui->eroKern->text().toInt());
         modifier = modifier +  " erosion " + ui->eroKern->text().toStdString();
     }
+    // Dialation
     if (ui->diaBx->isChecked())
     {
         s->dialation(ui->diaKern->text().toInt());
         modifier = modifier +  " dialation " + ui->diaKern->text().toStdString();
     }
+
     // Dislay the newly modified image
     img->displayImg(modifier);
 }
