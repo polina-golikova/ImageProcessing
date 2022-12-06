@@ -81,7 +81,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(824, 511);
+        MainWindow->resize(824, 469);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
@@ -273,7 +273,7 @@ public:
         colorMpBtn->setFont(font1);
         layoutWidget2 = new QWidget(centralwidget);
         layoutWidget2->setObjectName("layoutWidget2");
-        layoutWidget2->setGeometry(QRect(160, 249, 170, 31));
+        layoutWidget2->setGeometry(QRect(160, 249, 170, 37));
         horizontalLayout = new QHBoxLayout(layoutWidget2);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -291,7 +291,7 @@ public:
 
         layoutWidget3 = new QWidget(centralwidget);
         layoutWidget3->setObjectName("layoutWidget3");
-        layoutWidget3->setGeometry(QRect(160, 214, 208, 31));
+        layoutWidget3->setGeometry(QRect(160, 214, 208, 37));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget3);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
@@ -309,7 +309,7 @@ public:
 
         layoutWidget4 = new QWidget(centralwidget);
         layoutWidget4->setObjectName("layoutWidget4");
-        layoutWidget4->setGeometry(QRect(160, 179, 208, 31));
+        layoutWidget4->setGeometry(QRect(160, 179, 208, 37));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget4);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);

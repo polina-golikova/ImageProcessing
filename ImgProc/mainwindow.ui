@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>824</width>
-    <height>511</height>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -632,7 +632,7 @@
       <x>160</x>
       <y>249</y>
       <width>170</width>
-      <height>31</height>
+      <height>37</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -665,7 +665,7 @@
       <x>160</x>
       <y>214</y>
       <width>208</width>
-      <height>31</height>
+      <height>37</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -698,7 +698,7 @@
       <x>160</x>
       <y>179</y>
       <width>208</width>
-      <height>31</height>
+      <height>37</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
