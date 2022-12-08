@@ -60,8 +60,10 @@ void MainWindow::printOddError(std::string error)
 //
 void MainWindow::on_filePathTxt()
 {
+    std::string name = "images/";
+    std::filesystem::path cwd = std::filesystem::current_path() / name;
     filename = QFileDialog::getOpenFileName(this, "Choose File",
-                                            "//images/",
+                                            QString::fromStdString(cwd.string()),
                                             tr("*.png *.jpg *.jpeg *.bmp *.dib *.jpe *.jp2 *.webp *.pbm, *.pgm, *.ppm *.pxm, *.pnm *.sr, *.ras *.tiff, *.tif *.exr *.hdr, *.pic"));
 
     ui->filePathTxt->clear();

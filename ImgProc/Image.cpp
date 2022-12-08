@@ -1,5 +1,6 @@
 #include "Image.h"
 #include <QMessageBox>
+#include <filesystem>
 
 //  Image: creates Image object to perform operations on
 //
@@ -54,7 +55,7 @@ Image::~Image()
 void Image::displayImg(std::string commands) {
   // show image
   std::string title = "Image" + commands;
-  cv::imshow(title, *newImg);
+  imshow(title, *newImg);
 }
 
 //  displayOgImg: display original image
@@ -65,7 +66,7 @@ void Image::displayImg(std::string commands) {
 void Image::displayOgImg()
 {
     // show image
-    cv::imshow("Original Image", *ogImg);
+    imshow("Original Image", *ogImg);
 }
 
 //  reset: resets modified image to the original image contents
@@ -98,16 +99,17 @@ void Image::saveImage(std::string commands)
     // Undo grayscale on img
     makeRGB();
 
-    std::string name = "Image" + commands + ".jpg";
+    std::string name = "images/Image" + commands + ".jpg";
+    std::filesystem::path cwd = std::filesystem::current_path() / name;
 
     // writing the image to a defined location as JPEG
-    bool check = imwrite(name, *newImg);
+    bool check = imwrite(cwd.string(), *newImg);
 
     // if the image is not saved
     if (check == false) {
         // Show error window if error occured during output
         QMessageBox messageBox;
-        messageBox.critical(0,"Error","Failed to save image.");
+        messageBox.critical(0,"Error", "Failed to save image.");
         messageBox.setFixedSize(500,200);
     }
 }
