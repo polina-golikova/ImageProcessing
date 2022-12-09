@@ -2,7 +2,10 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QMessageBox>
+#include <regex>
 
+#define REG_NEG regex("[-+]?([0-9]*\.[0-9]+|[0-9]+)")
+#define REG_POS regex("[+]?([0-9]*\.[0-9]+|[0-9]+)")
 //  MainWindow: creates MainWindow constructor to generate the UI backend
 //
 //  Input: QWidget
@@ -150,20 +153,57 @@ void MainWindow::on_viewNewImageBtn()
     // High Pass
     if (ui->hpBx->isChecked())
     {
-        e->highPassFilter(ui->hpKern->text().toInt());
-        modifier = modifier +  " hp " + ui->hpKern->text().toStdString();
+
+        try
+        {
+            if (regex_match(ui->hpKern->text().toStdString(), REG_NEG))
+            {
+                e->highPassFilter(ui->hpKern->text().toInt());
+                modifier = modifier +  " hp " + ui->hpKern->text().toStdString();
+            }
+           else throw std::invalid_argument( "received wrong type of value" );
+        }
+        catch( const std::invalid_argument& e )
+        {
+            printOddError("Kernel must be int and >= 0");
+            return;
+        }
     }
     // Low Pass
     if (ui->lpBx->isChecked())
     {
-        e->lowPassFilter(ui->lpKern->text().toInt());
-        modifier = modifier +  " lp " + ui->lpKern->text().toStdString();
+        try
+        {
+            if (regex_match(ui->lpKern->text().toStdString(), REG_NEG))
+            {
+                e->lowPassFilter(ui->lpKern->text().toInt());
+                modifier = modifier +  " lp " + ui->lpKern->text().toStdString();
+            }
+            else throw std::invalid_argument( "received wrong type of value" );
+        }
+        catch( const std::invalid_argument& e )
+        {
+            printOddError("Kernel must be int and >= 0");
+            return;
+        }
     }
     // Brightness
     if (ui->brightBtn->isChecked())
     {
-        e->brightness(ui->brightNum->text().toInt());
-        modifier = modifier +  " brightness " + ui->brightNum->text().toStdString();
+        try
+        {
+            if (regex_match(ui->brightNum->text().toStdString(), REG_NEG))
+            {
+                e->brightness(ui->brightNum->text().toInt());
+                modifier = modifier +  " brightness " + ui->brightNum->text().toStdString();
+            }
+            else throw std::invalid_argument( "received wrong type of value" );
+        }
+        catch( const std::invalid_argument& e )
+        {
+            printOddError("Kernel must be int and >= 0");
+            return;
+        }
     }
     // Color map
     if (ui->colorMpBtn->isChecked())
@@ -263,57 +303,92 @@ void MainWindow::on_viewNewImageBtn()
     // Threshold
     if (ui->threshBx->isChecked())
     {
-        if (ui->threshVal->text().toInt() >= 0 && ui->threshVal->text().toInt() <= 255)
+        try
         {
-            s->thresh(ui->threshVal->text().toInt());
-            modifier += " thresh";
+            if (ui->threshVal->text().toInt() >= 0 && ui->threshVal->text().toInt() <= 255 && regex_match(ui->threshVal->text().toStdString(), REG_POS))
+            {
+                s->thresh(ui->threshVal->text().toInt());
+                modifier += " thresh";
+            }
+            else throw std::invalid_argument( "received wrong type of value" );
         }
-        else
+        catch( const std::invalid_argument& e )
         {
-            printOddError("Threshold must be within 0-255.");
+            printOddError("Threshold must be within int and 0-255.");
             return;
         }
-
     }
     // Gaussian Blur
     if (ui->gausBx->isChecked())
     {
-        if ((ui->gausKern->text().toInt() > 0) && (ui->gausKern->text().toInt() % 2 == 1))
+        try
         {
-            s->gauss(ui->gausKern->text().toInt());
-            modifier = modifier +  " gauss " + ui->gausKern->text().toStdString();
+            if (ui->gausKern->text().toInt() > 0 && ui->gausKern->text().toInt() % 2 == 1 && regex_match(ui->gausKern->text().toStdString(), REG_POS))
+            {
+                s->gauss(ui->gausKern->text().toInt());
+                modifier = modifier +  " gauss " + ui->gausKern->text().toStdString();
+            }
+            else throw std::invalid_argument( "received wrong type of value" );
         }
-        else
+        catch( const std::invalid_argument& e )
         {
-            printOddError("Kernel must be >=0 and odd.");
+            printOddError("Kernel must int, >=0, and odd.");
             return;
         }
     }
     // Sobel
     if (ui->sobBx->isChecked())
     {
-        if ((ui->sobKern->text().toInt() <= 31) && (ui->sobKern->text().toInt() % 2 == 1))
+        try
         {
-            s->sobel(ui->sobKern->text().toInt());
-            modifier = modifier +  " sob " + ui->sobKern->text().toStdString();
+            if (ui->sobKern->text().toInt() <= 31 && ui->sobKern->text().toInt() % 2 == 1 && regex_match(ui->sobKern->text().toStdString(), REG_POS))
+            {
+                s->sobel(ui->sobKern->text().toInt());
+                modifier = modifier +  " sob " + ui->sobKern->text().toStdString();
+            }
+            else throw std::invalid_argument( "received wrong type of value" );
         }
-        else
+        catch( const std::invalid_argument& e )
         {
-            printOddError("Kernel must be odd and <= 31");
+            printOddError("Kernel must be int, <= 31, and odd");
             return;
         }
     }
     // Erosion
     if (ui->eroBx->isChecked())
     {
-        s->erosion(ui->eroKern->text().toInt());
-        modifier = modifier +  " erosion " + ui->eroKern->text().toStdString();
+        try
+        {
+            if (ui->eroKern->text().toInt() >= 0 && regex_match(ui->eroKern->text().toStdString(), REG_POS))
+            {
+                s->erosion(ui->eroKern->text().toInt());
+                modifier = modifier +  " erosion " + ui->eroKern->text().toStdString();
+            }
+            else throw std::invalid_argument( "received wrong type of value" );
+        }
+        catch( const std::invalid_argument& e )
+        {
+            printOddError("Kernel must be int and >= 0");
+            return;
+        }
     }
     // Dialation
     if (ui->diaBx->isChecked())
     {
-        s->dialation(ui->diaKern->text().toInt());
-        modifier = modifier +  " dialation " + ui->diaKern->text().toStdString();
+        try
+        {
+            if (ui->diaKern->text().toInt() >= 0 && regex_match(ui->diaKern->text().toStdString(), REG_POS))
+            {
+                s->dialation(ui->diaKern->text().toInt());
+                modifier = modifier +  " dialation " + ui->diaKern->text().toStdString();
+            }
+            else throw std::invalid_argument( "received wrong type of value" );
+        }
+        catch( const std::invalid_argument& e )
+        {
+            printOddError("Kernel must be >= 0");
+            return;
+        }
     }
 
     // Dislay the newly modified image
