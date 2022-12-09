@@ -25,9 +25,15 @@
 
 QT_BEGIN_NAMESPACE
 
+//  Ui_MainWindow: designs UI for the GUI
+//
+//  Input:
+//  Output:
+//
 class Ui_MainWindow
 {
 public:
+    // public widgets and objects that are drawn on the GUI
     QWidget *centralwidget;
     QTextEdit *filePathTxt;
     QPushButton *openImageBtn;
@@ -77,6 +83,7 @@ public:
     QLabel *label_13;
     QStatusBar *statusbar;
 
+    // add location, sizing, and shapes with types to widgets
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
@@ -335,6 +342,7 @@ public:
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
+    // set up UI and compile all widgets together to the application
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
@@ -391,6 +399,7 @@ public:
 
 };
 
+// set a namespace to use later on
 namespace Ui {
     class MainWindow: public Ui_MainWindow {};
 } // namespace Ui
