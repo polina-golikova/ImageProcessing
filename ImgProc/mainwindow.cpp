@@ -65,6 +65,7 @@ void MainWindow::printOddError(std::string error)
 //
 void MainWindow::on_filePathTxt()
 {
+    // read from images in current directory
     std::string name = "images/";
     std::filesystem::path cwd = std::filesystem::current_path() / name;
     filename = QFileDialog::getOpenFileName(this, "Choose File",
@@ -214,90 +215,112 @@ void MainWindow::on_viewNewImageBtn()
         if (ui->colorMpBx->currentText().toStdString() == "Autumn")
         {
             e->colorMap(COLORMAP_AUTUMN);
+            modifier += "_au";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Bone")
         {
             e->colorMap(COLORMAP_BONE);
+            modifier += "_bon";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Jet")
         {
             e->colorMap(COLORMAP_JET);
+            modifier += "_jet";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Winter")
         {
             e->colorMap(COLORMAP_WINTER);
+            modifier += "_win";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Rainbow")
         {
             e->colorMap(COLORMAP_RAINBOW);
+            modifier += "_rai";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Ocean")
         {
             e->colorMap(COLORMAP_OCEAN);
+            modifier += "_ocea";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Summer")
         {
             e->colorMap(COLORMAP_SUMMER);
+            modifier += "_sum";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Spring")
         {
             e->colorMap(COLORMAP_SPRING);
+            modifier += "_spri";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Cool")
         {
             e->colorMap(COLORMAP_COOL);
+            modifier += "_coo";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "HSV")
         {
             e->colorMap(COLORMAP_HSV);
+            modifier += "_h";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Pink")
         {
             e->colorMap(COLORMAP_PINK);
+            modifier += "_pi";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Hot")
         {
             e->colorMap(COLORMAP_HOT);
+            modifier += "_ho";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Parula")
         {
             e->colorMap(COLORMAP_PARULA);
+            modifier += "_par";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Magma")
         {
             e->colorMap(COLORMAP_MAGMA);
+            modifier += "_mag";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Inferno")
         {
             e->colorMap(COLORMAP_INFERNO);
+            modifier += "_inf";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Plasma")
         {
             e->colorMap(COLORMAP_PLASMA);
+            modifier += "_plas";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Viridis")
         {
             e->colorMap(COLORMAP_VIRIDIS);
+            modifier += "_vir";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Cividis")
         {
             e->colorMap(COLORMAP_CIVIDIS);
+            modifier += "_civ";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Twilight")
         {
             e->colorMap(COLORMAP_TWILIGHT);
+            modifier += "_twi";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "TwilightShifted")
         {
             e->colorMap(COLORMAP_TWILIGHT_SHIFTED);
+            modifier += "_twis";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "Turbo")
         {
             e->colorMap(COLORMAP_TURBO);
+            modifier += "_tur";
         }
         else if (ui->colorMpBx->currentText().toStdString() == "DeepGreen")
         {
             e->colorMap(COLORMAP_DEEPGREEN);
+            modifier += "_dg";
         }
     }
 
