@@ -10,9 +10,13 @@
 1. Go to ImgProc and open ImgProc.pro in Qt Creator.
 2. Enable MSVC 2019 64 bit build.
 3. Ensure you've installed the OpenCV library and set DLLs as user path as so below. If your paths are different, verify with your install folder. 
+	
 	C:\Qt\6.4.1\msvc2019_64\bin
+	
 	C:\Program Files (x86)\opencv\build\x64\vc15\bin
+	
 	C:\Program Files (x86)\opencv\build\x64\vc14\bin
+	
 4. Click Build icon on the bottom left.
 
 ### To use application
