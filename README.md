@@ -6,7 +6,7 @@
 2. Run ImgProc.exe
 3. use images/ for loading and saving images
 
-Or directly from Qt Creator IDE
+### Or directly from Qt Creator IDE
 1. Go to ImgProc and open ImgProc.pro in Qt Creator.
 2. Enable MSVC 2019 64 bit build.
 3. Ensure you've installed the OpenCV library and set DLLs as user path as so below. If your paths are different, verify with your install folder. 
