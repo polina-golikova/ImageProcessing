@@ -380,13 +380,11 @@ Makefile: ..\ImgProc\ImgProc.pro C:\Qt\6.4.1\msvc2019_64\mkspecs\win32-msvc\qmak
 		..\ImgProc\ImgProc.pro \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Widgets.prl \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Gui.prl \
-		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core5Compat.prl \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core.prl \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6EntryPoint.prl \
 		C:\Qt\6.4.1\msvc2019_64\mkspecs\features\build_pass.prf \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Widgetsd.prl \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Guid.prl \
-		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core5Compatd.prl \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6Cored.prl \
 		C:\Qt\6.4.1\msvc2019_64\lib\Qt6EntryPointd.prl
 	$(QMAKE) -o Makefile ..\ImgProc\ImgProc.pro -spec win32-msvc "CONFIG+=qtquickcompiler"
@@ -686,13 +684,11 @@ C:\Qt\6.4.1\msvc2019_64\mkspecs\features\lex.prf:
 ..\ImgProc\ImgProc.pro:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6Widgets.prl:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6Gui.prl:
-C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core5Compat.prl:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core.prl:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6EntryPoint.prl:
 C:\Qt\6.4.1\msvc2019_64\mkspecs\features\build_pass.prf:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6Widgetsd.prl:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6Guid.prl:
-C:\Qt\6.4.1\msvc2019_64\lib\Qt6Core5Compatd.prl:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6Cored.prl:
 C:\Qt\6.4.1\msvc2019_64\lib\Qt6EntryPointd.prl:
 qmake: FORCE

@@ -210,6 +210,7 @@ void MainWindow::on_viewNewImageBtn()
     // Color map
     if (ui->colorMpBtn->isChecked())
     {
+        modifier = modifier +  " color";
         if (ui->colorMpBx->currentText().toStdString() == "Autumn")
         {
             e->colorMap(COLORMAP_AUTUMN);

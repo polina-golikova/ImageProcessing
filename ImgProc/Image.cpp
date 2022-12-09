@@ -96,9 +96,6 @@ double Image::getWidth() { return width; }
 //
 void Image::saveImage(std::string commands)
 {
-    // Undo grayscale on img
-    makeRGB();
-
     std::string fileName = path.substr(path.find_last_of("/\\") + 1);
     std::string name = "images/" + fileName + commands + ".jpg";
     std::filesystem::path cwd = std::filesystem::current_path() / name;
