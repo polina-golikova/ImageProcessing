@@ -4,8 +4,10 @@
 #include <QMessageBox>
 #include <regex>
 
-#define REG_NEG regex("[-+]?([0-9]*\.[0-9]+|[0-9]+)")
-#define REG_POS regex("[+]?([0-9]*\.[0-9]+|[0-9]+)")
+// regular expressions to filter out non int numbers for only pos and pos & neg numbers
+#define REG_NEG regex("(^-?0\.[0-9]*[1-9]+[0-9]*$)|(^-?[1-9]+[0-9]*((\.[0-9]*[1-9]+[0-9]*$)|(\.[0-9]+)))|(^-?[1-9]+[0-9]*$)|(^0$){1}")
+#define REG_POS regex("^[1-9]+[0-9]*$")
+
 //  MainWindow: creates MainWindow constructor to generate the UI backend
 //
 //  Input: QWidget
